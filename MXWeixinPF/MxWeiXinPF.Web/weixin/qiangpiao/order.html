@@ -1,0 +1,477 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>【上海豪鑫国际旅行社团购】</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="initial-scale=1, width=device-width, maximum-scale=1, user-scalable=no">
+    <meta name="viewport" content="initial-scale=1.0,user-scalable=no,maximum-scale=1" media="(device-height: 568px)">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name='apple-touch-fullscreen' content='yes'>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="format-detection" content="address=no">
+
+    <link href="css/index.css" rel="stylesheet" />
+    <link href="css/mystyle.css" rel="stylesheet" />
+
+     <link href="css/dialog.css" rel="stylesheet" />
+   
+    <script src="js/jquery.min.js"></script>
+    <script src="js/main.js"></script>
+     <script src="js/dialog_min.js"></script>
+    <style>
+        .album {
+            height: 3.9rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+            .album img {
+                width: 100%;
+                min-height: 100%;
+                -webkit-transform: translateY(-50%);
+                -ms-transform: translateY(-50%);
+                top: 50%;
+                position: relative;
+            }
+
+            .album .desc {
+                position: absolute;
+                bottom: 0;
+                width: 100%;
+                color: white;
+                text-align: center;
+                height: .56rem;
+                line-height: .56rem;
+                font-size: .24rem;
+                background: rgba(0, 0, 0, .5);
+            }
+
+        ul.ul {
+            list-style-type: initial;
+            padding-left: .4rem;
+        }
+
+            ul.ul li {
+                font-size: .3rem;
+                margin: .1rem 0;
+                line-height: 1.5;
+            }
+
+        /*///*/
+        #deal-detail .buy-price {
+            color: #999;
+            position: relative;
+        }
+
+        .buy-price .price {
+            vertical-align: text-top;
+        }
+
+        .buy-price strong {
+            font-size: .66rem;
+        }
+
+        .buy-price space {
+            width: .16rem;
+        }
+
+        .list .buy-price .buy-btn {
+            position: absolute;
+            margin: 0;
+            right: .2rem;
+            top: .21rem;
+            width: 2.6rem;
+            margin-top: 0;
+        }
+
+        .buy-desc h1 {
+            font-size: .36rem;
+            margin: 0;
+            margin-bottom: .22rem;
+            color: #000;
+        }
+
+        .buy-desc p {
+            margin: 0;
+            color: #666;
+        }
+
+        /*agreement*/
+        .agreement li {
+            display: inline-block;
+            width: 50%;
+            margin-bottom: .22rem;
+            box-sizing: border-box;
+            color: #666;
+        }
+
+            .agreement li:nth-child(2n) {
+                padding-left: .14rem;
+            }
+
+            .agreement li:nth-child(1n) {
+                padding-right: .14rem;
+            }
+
+        .agreement ul.agree li {
+            height: .32rem;
+            line-height: .32rem;
+        }
+
+            .agreement ul.agree li.active {
+                color: #6bbd00;
+            }
+
+        .agreement ul.btn-line li {
+            vertical-align: middle;
+            margin-top: .06rem;
+            margin-bottom: 0;
+        }
+
+        .agreement .text-icon {
+            margin-right: .14rem;
+            vertical-align: top;
+            height: 100%;
+        }
+
+        .agreement .agree .text-icon {
+            font-size: .4rem;
+            margin-right: .2rem;
+        }
+
+        /* 通用星星样式 */
+        .stars {
+            font-style: normal;
+            font-size: .36rem;
+            line-height: .36rem;
+        }
+
+        .buy-comment {
+            float: right;
+        }
+
+        .voice-info {
+            font-size: .3rem;
+            color: #eb8706;
+        }
+
+        #deal-details .detail-title {
+            background-color: #F8F9FA;
+            padding: .2rem;
+            font-size: .3rem;
+            color: #000;
+            border-bottom: 1px solid #ccc;
+        }
+
+            #deal-details .detail-title p {
+                text-align: center;
+            }
+
+        #deal-details .detail-group {
+            font-size: .3rem;
+            display: -webkit-box;
+            display: -ms-flexbox;
+        }
+
+        .detail-group .left {
+            -webkit-box-flex: 1;
+            -ms-flex: 1;
+            display: block;
+            padding: .28rem 0;
+            padding-right: .2rem;
+        }
+
+        .detail-group .right {
+            display: -webkit-box;
+            display: -ms-flexbox;
+            -webkit-box-align: center;
+            -ms-box-align: center;
+            width: 1.3rem;
+            padding: .28rem .2rem;
+            border-left: 1px solid #ccc;
+        }
+
+        .detail-group .middle {
+            display: -webkit-box;
+            display: -ms-flexbox;
+            -webkit-box-align: center;
+            -ms-box-align: center;
+            width: 1.9rem;
+            padding: .28rem .2rem;
+            border-left: 1px solid #ccc;
+        }
+
+        #deal-terms {
+            font-size: .3rem;
+        }
+
+        .js-fav-btn .fav-text {
+            vertical-align: top;
+        }
+
+            .js-fav-btn .fav-text:after {
+                content: "收藏";
+            }
+
+        .js-fav-btn .icon-star {
+            display: none;
+        }
+
+        .js-fav-btn .icon-star-empty {
+            display: inline-block;
+        }
+
+        .js-fav-btn.faved .fav-text:after {
+            content: "取消收藏";
+        }
+
+        .js-fav-btn.faved .icon-star {
+            display: inline-block;
+        }
+
+        .js-fav-btn.faved .icon-star-empty {
+            display: none;
+        }
+
+        .comment-headline {
+            color: #999;
+            line-height: .35rem;
+        }
+
+        /* 酒店和促銷工具 */
+        .hotel-desc-current {
+            color: #999;
+            margin-left: .08rem;
+        }
+
+        dl.list .hotel-price-panel {
+            background: #f0efed;
+            border-left: none;
+            border-right: none;
+        }
+
+        .hotel-prices {
+            padding: 5px 0;
+        }
+
+            .hotel-prices > li {
+                display: inline-block;
+                width: 94px !important;
+                padding: 3px 5px 3px 10px;
+                text-align: left;
+                font-size: 12px;
+                color: #666;
+            }
+
+                .hotel-prices > li:after {
+                    content: ' ';
+                    display: table;
+                    margin-top: -30%;
+                    border-left: 1px solid #ccc;
+                    padding-top: 25%;
+                    float: right;
+                    clear: both;
+                }
+
+                .hotel-prices > li.active {
+                    color: #2dbeae;
+                }
+
+        .campaign .tag,
+        .campaign-item .tag {
+            position: static;
+            margin-left: .04rem;
+            background: #ff8c00;
+            color: #fff;
+            line-height: 1.5;
+            display: inline-block;
+            padding: 0 .06rem;
+            text-align: center;
+            font-size: .24rem;
+            border-radius: .06rem;
+        }
+
+        .hotel-price {
+            color: #ff8c00;
+            font-size: .24rem;
+            display: block;
+        }
+
+        .campaign {
+            height: .48rem;
+        }
+
+            .campaign .tag {
+                font-size: .28rem;
+            }
+
+        .campaign-tip {
+            padding-top: .24rem;
+            padding-bottom: .24rem;
+            background-color: #fff;
+            border-bottom: 1px solid #ddd8ce;
+            color: #555;
+        }
+
+        .btn-kefu {
+            position: absolute;
+            right: .016rem;
+            top: .1rem;
+            color: #ff8c00;
+            border-color: #ff8c00;
+        }
+    </style>
+</head>
+<body id="deal-detail" onselectstart="return true;" ondragstart="return false;">
+
+    <header class="navbar">
+        <div class="nav-wrap-left">
+            <a class="react back" href="javascript:history.back()"><i class="text-icon icon-back"></i></a>
+        </div>
+        <h1 class="nav-header">确认订单</h1>
+
+
+    </header>
+
+    <dl id="deal-terms" class="list">
+        <dd>
+            <dl>
+                <dt gaevent="imt/deal/terms">抢票须知</dt>
+                <dd class="dd-padding">
+                    <ul class="ul">
+                        <li>有效期：2013.3.5 至 2014.12.31
+                        </li>
+                        <li>有效期内周末、法定节假日通用
+                        </li>
+                        <li>优惠码使用时间：24小时营业
+                        </li>
+                        <li>无需预约，咨询请致电商家
+                        </li>
+                        <li>
+                        凭优惠码消费不可享受店内其他优惠活动
+ 
+                    </ul>
+                </dd>
+            </dl>
+        </dd>
+    </dl>
+
+
+    <div id="deal" class="list">
+        <div class="list">
+            <div class="album">
+                <img src="http://p1.meituan.net/440.0/deal/__47273021__8165035.jpg.webp">
+            </div>
+
+        </div>
+
+
+        <div class="clearboth"></div>
+         <form id="form1">
+        <div>
+            <h4 class="quick-buy-title"></h4>
+            <dl class="list">
+                <dd>
+                    <dl>
+                        <dd class="kv-line-r dd-padding" data-com="smsBtn" data-requrl="/account/mobilelogincode">
+                            <input type="tel" name="txttelephone" id="txttelephone" class="input-weak kv-k"
+                                placeholder="请输入手机号">
+                            <button id="smsCode" type="button" class="btn btn-weak kv-v" onclick="getReceiveMemberCardVCode(this, event, 'form1', 'txttelephone');">
+                                发送验证码
+                            </button>
+                        </dd>
+                        <dd class="dd-padding">
+                            <input class="input-weak" id="sms-captcha" name="quickBuyCode" type="tel" nosave="true" pattern="[0-9]+" placeholder="请输入手机短信中的验证码">
+                        </dd>
+                    </dl>
+                </dd>
+            </dl>
+        </div>
+
+        <div class="clearboth"></div>
+
+</form>
+
+    </div>
+    <div class="btn-wrapper">
+        <button type="submit" gaevent="imt/buy/quickBuy/submit"
+            class="btn btn-block btn-strong btn-larger  mj-submit"  >
+            提交订单</button>
+    </div>
+    <footer>
+
+        <div class="footer-copyright">
+            <div class="hr"></div>
+            <span class="footer-copyright-text">©2014 连云港今日文化传媒</span>
+        </div>
+    </footer>
+    <div class="top-btn" data-com="gotop"><a class="react"><i class="text-icon">⇧</i></a></div>
+    <div id="meituan_check">
+        <br>
+        <br>
+        <br>
+    </div>
+
+    <script type="text/javascript">
+
+        var intervalId, buttonObj;
+        //发送下一条短信需要间隔的秒数
+        var seconds = 60;
+        function getReceiveMemberCardVCode(clickObj, evt, formId, teleName) {
+           
+            var pid = 1071;
+            var form = document.getElementById(formId);
+            var req = {
+                telephone: $.trim(form[teleName].value),
+                pid: pid,
+            }
+
+            if (!req.telephone) {
+                alert("请输入手机号", 1000); return;
+            }
+
+
+            clickObj.setAttribute("disabled", "disabled");
+            $.ajax({
+                url: "uProcess.ashx?openid=<%=openid%>&mycat=sendCardCheckCode&cardType=<%=cardType%>",
+                type: "post",
+                data: req,
+                dataType: "JSON",
+                success: function (res) {
+                    if (0 == res.errno) {
+                        clickObj.value = '验证码发送成功';
+                        buttonObj = clickObj;
+                        intervalId = setInterval("ticker()", 1000);
+
+                    } else {
+                        alert(res.content, 1500);
+                        buttonObj = clickObj;
+                        intervalId = setInterval("ticker()", 1000);
+                        return false;
+
+                    }
+
+                }
+            });
+        }
+
+        function ticker() {
+            seconds--;
+            if (seconds > 55) {
+                //提示消息显示5秒钟
+            } else if (seconds > 0) {
+                buttonObj.value = seconds + "秒后可重新获取";
+            } else {
+                clearInterval(intervalId);
+                buttonObj.removeAttribute("disabled");
+                buttonObj.value = "获取验证码";
+                seconds = 60;
+                buttonObj = null;
+            }
+        }
+    </script>
+</body>
+</html>
+

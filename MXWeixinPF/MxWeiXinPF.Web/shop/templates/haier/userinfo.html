@@ -1,0 +1,321 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="author" content="m.ehaier.com">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" name="viewport" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+    <meta content="telephone=no" name="format-detection" />
+    <meta content="false" id="twcClient" name="twcClient" />
+    <link type="text/css" rel="stylesheet" href="/shop/templates/haier/css/style_1.css">
+    <link rel="apple-touch-icon-precomposed" href="{$shopconfig.logo}" />
+    <link rel="shortcut icon" type="image/x-icon" href="{$shopconfig.logo}" />
+    <script type="text/javascript" src="/shop/templates/haier/js/zepto.js"></script>
+    <script type="text/javascript" src="/shop/templates/haier/js/gs.js"></script>
+    <script type="text/javascript" src="/shop/templates/haier/js/mediav.js"></script>
+    <title>订单列表</title>
+    <link type="text/css" rel="stylesheet" href="/shop/templates/haier/css/style_1.css">
+    <link type="text/css" rel="stylesheet" href="/shop/templates/haier/css/member.css">
+    <link type="text/css" rel="stylesheet" href="/shop/templates/haier/css/Details.css">
+    <link rel="stylesheet" type="text/css" href="/shop/templates/haier/css/navigator.default.css" />
+    <link rel="stylesheet" type="text/css" href="/shop/templates/haier/css/dialog.css" />
+    <link rel="stylesheet" type="text/css" href="/shop/templates/haier/css/dialog.default.css" />
+    <!--皮肤文件，若不使用该皮肤，可以不加载-->
+    <script type="text/javascript" src="/shop/templates/haier/js/highlight.js"></script>
+    <script type="text/javascript" src="/shop/templates/haier/js/parseTpl.js"></script>
+    <script type="text/javascript" src="/shop/templates/haier/js/gmu.js"></script>
+    <script type="text/javascript" src="/shop/templates/haier/js/event.js"></script>
+    <script type="text/javascript" src="/shop/templates/haier/js/widget.js"></script>
+    <script type="text/javascript" src="/shop/templates/haier/js/dialog.js"></script>
+    <script type="text/javascript" src="/shop/templates/haier/js/$position.js"></script>
+    <script type="text/javascript">
+        var basePath = "{$yuming}", baseParam = "";
+ </script>
+    <script type="text/javascript">
+        $(function () {
+            //统计购物车数量
+            $.getJSON("/shop/shopmgr.ashx?wid={$wid}&openid={$openid}&myact=pcount", function (d, status) {
+                $("#count").text(d.data);
+
+            });
+        });
+
+    </script>
+</head>
+<body>
+    <header class="header">
+        <span class="fh left"><a href="javascript:history.back(1)">&nbsp;</a></span>  我的订单
+  <span class="hd_right right">
+      <a class="gwc" href="{$carturl}"><span id="count"></span>&nbsp;</a>
+      <a class="right_but" href="/shop/navigate.aspx?wid={$wid}&openid={$openid}">&nbsp;</a>
+  </span>
+    </header>
+
+    <section class="mainLayout">
+        <div class="main">
+            <div class="Login">
+                <vt:foreach from="$o_dfu" item="o" index="i">           
+        <div class="address_nr">
+        <div class="address_top">
+          <div class="address_t order_top" style="cursor:pointer;"> 
+          	订单号：{$o.order_no} 
+          	<a href="javascript:void(0);" class="order_red"> 
+          		            待付款
+                        </a> 
+          </div>
+          <div class="address_b">
+            <div style="cursor:pointer;" onclick="toOrderDetailView('{$o.id}')">
+              <p>收货信息：{$o.accept_name} {$o.telphone}  </p>
+              <p>下单时间：{$o.add_time format="yyyy-MM-dd HH:mm:ss"}</p>
+              <p>支付金额：<span class="order_color">￥{$o.order_amount}</span></p>
+            </div>
+            <div class="order_xq order_xx" style="cursor:pointer;" onclick="toOrderDetailView('{$o.id}');">
+				<a href="javascript:void(0);">查看详情</a>
+				<a href="javascript:void(0);" class="micon order_more"></a>
+			</div>
+            <div class="operation_bt"> 
+                 
+						<a class="m-btn btn-blue" href="javascript:void(0);" onclick="lijizhifu('{$o.id}');" >立即支付</a>
+                           
+                      <a class="m-btn btn-blue" href="javascript:void(0);" onclick="cancelOrder('{$o.id}','{$o.order_no}');" >取消订单</a> 
+							</div>
+          </div>
+        </div>
+      </div>
+           
+        </vt:foreach>
+                <vt:foreach from="$o_dsh" item="o" index="i">           
+        <div class="address_nr">
+        <div class="address_top">
+          <div class="address_t order_top" style="cursor:pointer;"> 
+          	订单号：{$o.order_no} 
+          	<a href="javascript:void(0);" class="order_red"> 
+          		            待收货
+                        </a> 
+          </div>
+          <div class="address_b">
+            <div style="cursor:pointer;" onclick="toOrderDetailView('{$o.id}')">
+              <p>收货信息：{$o.accept_name} {$o.telphone}  </p>
+              <p>下单时间：{$o.add_time format="yyyy-MM-dd HH:mm:ss"}</p>
+              <p>支付金额：<span class="order_color">￥{$o.order_amount}</span></p>
+            </div>
+            <div class="order_xq order_xx" style="cursor:pointer;" onclick="toOrderDetailView('{$o.id}');">
+				<a href="javascript:void(0);">查看详情</a>
+				<a href="javascript:void(0);" class="micon order_more"></a>
+			</div>
+            <div class="operation_bt"> 
+						<a class="m-btn btn-blue" href="javascript:void(0);" onclick="shouhuo('{$o.id}');">确认收货</a>		
+						<a class="m-btn btn-blue" href="/shop/orderProducts.aspx?wid={$wid}&openid={$openid}&orderid={$o.id}">物流信息</a>
+						<a class="m-btn btn-blue" href="javascript:void(0);" onclick="cancelOrder('{$o.id}','{$o.order_no}');" >取消订单</a> 							 
+							</div>
+          </div>
+        </div>
+      </div>
+           
+        </vt:foreach>
+                <vt:foreach from="$o_yjs" item="o" index="i">           
+        <div class="address_nr">
+        <div class="address_top">
+          <div class="address_t order_top" style="cursor:pointer;"> 
+          	订单号：{$o.order_no} 
+          	<a href="javascript:void(0);" class="order_red"> 
+          		            已结束
+                        </a> 
+          </div>
+          <div class="address_b">
+            <div style="cursor:pointer;" onclick="toOrderDetailView('{$o.id}')">
+              <p>收货信息：{$o.accept_name} {$o.telphone}  </p>
+              <p>下单时间：{$o.add_time format="yyyy-MM-dd HH:mm:ss"}</p>
+              <p>支付金额：<span class="order_color">￥{$o.order_amount}</span></p>
+            </div>
+            <div class="order_xq order_xx" style="cursor:pointer;" onclick="toOrderDetailView('{$o.id}');">
+				<a href="javascript:void(0);">查看详情</a>
+				<a href="javascript:void(0);" class="micon order_more"></a>
+			</div>
+            <div class="operation_bt"> 
+				<a class="m-btn btn-blue" href="/shop/orderProducts.aspx?wid={$wid}&openid={$openid}&orderid={$o.id}">物流信息</a>
+													 
+							</div>
+          </div>
+        </div>
+      </div>
+           
+        </vt:foreach>
+            </div>
+        </div>
+    </section>
+    <!--_share_js-->
+       <vt:template id="_bottom" file="_bottom.html" charset="utf-8" />
+    <!--/_share_js-->
+
+    <!--联系客服-->
+    <div class="tc2" style="display: none;">
+        <div class="kf_top">
+            <p class="dh"></p>
+            <p class="tc_cg">早8:00 - 晚20:00</p>
+        </div>
+        <div class="tc_button">
+            <ul>
+                <li><a href="tel:">拨打咨询</a></li>
+                <li><a href="javascript:void(0)" class="lxkf_close">取消</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+
+        //联系客服打开
+        $(".lxkf").click(function () {
+            if ($('#load_mask').length) { }
+            else {
+                var h = $(document.body).height() + "px";
+                $("<div id='load_mask' class='tc_zz' style='height:" + h + "' />").appendTo("body");
+            }
+            $("#load_mask").show();
+            var t = $(window).scrollTop(), h = $(window).height(), iTop = 0;
+            iTop = ((h - $(".tc2").height()) / 2 + t) + "px";
+            $(".tc2").css("top", iTop).show();
+
+        })
+        //联系客服关闭
+        $(".lxkf_close").click(function () {
+            $(".tc2").hide();
+            $("#load_mask").hide();
+        })
+    </script>
+    <script type="text/javascript">
+
+        function lijizhifu(orderId) {
+
+             var rpage = "/shop/userinfo.aspx?&wid={$wid}&openid={$openid}";
+             window.location.href = "/api/payment/paypage.aspx?showwxpaytitle=1&paytype=shop&wid={$wid}&openid={$openid}&orderid=" + orderId + "&rpage=" + escape(window.basePath+"/shop/userinfo.aspx?&wid={$wid}&openid={$openid}") + "";
+
+        }
+       
+        function shouhuo(orderId) {
+            if (confirm("确认收货吗？")) {
+                $.ajax({
+                    type: "GET",
+                    url: "/shop/shopmgr.ashx?&myact=shouhuo",
+                    data: {
+                        order_id: orderId,
+
+                    },
+                    dataType: "json",
+                    success: function (result) {
+                        if (result.errCode == true) {
+                          
+                            window.location.href = "/shop/userinfo.aspx?wid={$wid}&openid={$openid}";
+                        } else {
+                            alert(result.msg);
+                        }
+                    }
+                });
+            }
+        }
+        function toWxPay(orderSn, orderAmount) {
+            //检查微信版本，5.0及以上版本支持微信支付
+            var userAgent = window.navigator.userAgent;
+            if (!userAgent || userAgent.indexOf("MicroMessenger") == -1) {
+                alert("微信支付只能在微信中完成");
+                return;
+            }
+            if (userAgent.substring(userAgent.indexOf("MicroMessenger") + 15, userAgent.indexOf("MicroMessenger") + 16) < 5) {
+                alert("微信版本过低，请使用5.0及以上版本");
+                return;
+            }
+            window.location.href = "/mobile/wxpay/pay.html?showwxpaytitle=1&orderSn=" + orderSn + "&orderAmount=" + orderAmount;
+        }
+
+        function cancelOrder(orderId, orderSn) {
+               if (confirm("确定取消订单【" + orderSn + "】吗？")) {
+                $.ajax({
+                    type: "GET",
+                    url: "/shop/shopmgr.ashx?&myact=order_canel",
+                    data: {
+                        order_id: orderId,
+
+                    },
+                    dataType: "json",
+                    success: function (result) {
+                        if (result.errCode == true) {
+                            alert(result.msg);
+
+                            window.location.href = "/shop/userinfo.aspx?wid={$wid}&openid={$openid}";
+                        } else {
+                            alert(result.msg);
+                        }
+                    }
+                });
+            }
+        }
+
+        function toOrderDetailView(orderSn) {
+            window.location.href = "/shop/order_detail.aspx?wid={$wid}&openid={$openid}&orderid=" + orderSn;
+        }
+
+        var orderId, orderAmount;
+
+        function openDetailCoupon(paramOrderId, paramOrderAmount) {
+            console.log("excute")
+            orderId = paramOrderId;
+            orderAmount = paramOrderAmount;
+            dialog.open();
+        }
+
+        var dialog = gmu.Dialog({
+            autoOpen: false,
+            closeBtn: false,
+            buttons: {
+                '取消': function () {
+                    this.close();
+                },
+                '确定': function () {
+                    if ($("#couponSn").val() == null) {
+                        alert(请输入优惠码);
+                    }
+                    console.log("orderId=" + orderId);
+                    console.log("orderAmount=" + orderAmount);
+                    Zepto.ajax({
+                        type: "GET",
+                        url: "/mobile/order/submitTailCoupon.html",
+                        dataType: "json",
+                        data: {
+                            orderId: orderId,
+                            orderAmount: orderAmount,
+                            couponSn: $("#couponSn").val()
+                        },
+                        success: function (result) {
+                            if (result.success == true) {
+                                alert("操作成功");
+                                window.location.href = "/mobile/order/orderList.html";
+                            } else {
+                                alert(result.message);
+                            }
+                        }
+                    });
+                }
+            },
+            title: '优惠券',
+            content: '<input id="couponSn" name="couponSn" type="text" placeholder="请输入优惠券码" value=""/>'
+        });
+        dialog._options['_wrap'].addClass('login-dialog login-dialog-dark');
+    </script>
+
+    <script type="text/javascript" src="/shop/templates/haier/js/touch.js"></script>
+    <script type="text/javascript" src="/shop/templates/haier/js/iscroll.js"></script>
+    <script type="text/javascript" src="/shop/templates/haier/js/highlight.js"></script>
+    <script type="text/javascript" src="/shop/templates/haier/js/parseTpl.js"></script>
+    <script type="text/javascript" src="/shop/templates/haier/js/gmu.js"></script>
+    <script type="text/javascript" src="/shop/templates/haier/js/event.js"></script>
+    <script type="text/javascript" src="/shop/templates/haier/js/widget.js"></script>
+    <script type="text/javascript" src="/shop/templates/haier/js/navigator.js"></script>
+    <script type="text/javascript" src="/shop/templates/haier/js/scrolltonext.js"></script>
+    <script type="text/javascript" src="/shop/templates/haier/js/$scrollable.js"></script>
+    <script type="text/javascript">
+        $('.nav').navigator();
+    </script>
+</body>
+</html>

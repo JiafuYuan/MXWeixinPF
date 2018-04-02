@@ -1,0 +1,49 @@
+﻿
+    <!--分享前控制-->
+   
+
+<script type="text/javascript">
+
+    window.shareData = {
+        "imgUrl":"{$fxPic}",
+        "timeLineLink":"{$thisurl}",
+        "tTitle":"{$fxTitle}",
+        "tContent":"{$fxDesc}"
+    };
+    document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
+        WeixinJSBridge.on('menu:share:appmessage', function (argv) {
+            WeixinJSBridge.invoke('sendAppMessage', {
+                "img_url": window.shareData.imgUrl,
+                "link": window.shareData.timeLineLink,
+                "desc": window.shareData.tContent,
+                "title": window.shareData.tTitle
+            }, function (res) {
+
+
+            })
+        });
+
+        WeixinJSBridge.on('menu:share:timeline', function (argv) {
+            WeixinJSBridge.invoke('shareTimeline', {
+                "img_url": window.shareData.imgUrl,
+                "img_width": "640",
+                "img_height": "640",
+                "link": window.shareData.timeLineLink,
+                "desc": window.shareData.tContent,
+                "title": window.shareData.tTitle
+            }, function (res) {
+
+
+
+
+            });
+        });
+    }, false);
+</script>
+
+
+<!--分享前控制-->
+
+
+
+

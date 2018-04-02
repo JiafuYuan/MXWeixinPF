@@ -1,0 +1,216 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="author" content="m.ehaier.com">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" name="viewport" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+    <meta content="telephone=no" name="format-detection" />
+    <meta content="false" id="twcClient" name="twcClient" />
+    <link type="text/css" rel="stylesheet" href="/shop/templates/haier/css/style_1.css">
+    <link rel="apple-touch-icon-precomposed" href="{$shopconfig.logo}" />
+    <link rel="shortcut icon" type="image/x-icon" href="{$shopconfig.logo}" />
+    <script type="text/javascript" src="/shop/templates/haier/js/zepto.js"></script>
+ 
+    <script type="text/javascript" src="/shop/templates/haier/js/mediav.js"></script>
+    <title>{$model.productName}</title>
+    <link type="text/css" rel="stylesheet" href="/shop/templates/haier/css/Details.css">
+
+    <link rel="stylesheet" type="text/css" href="/shop/templates/haier/js/swiper.css">
+    <link rel="stylesheet" type="text/css" href="/shop/templates/haier/js/detailgallery.css">
+
+    <script type="text/javascript" src="/shop/templates/haier/js/jquery-2.0.2.min.js"></script>
+    <!--zepto and extend-->
+    <script type="text/javascript" src="/shop/templates/haier/js/touch.js"></script>
+    <script type="text/javascript" src="/shop/templates/haier/js/selector.js"></script>
+    <script type="text/javascript" src="/shop/templates/haier/js/swiper-2.4.js"></script>
+    <script type="text/javascript" src="/shop/templates/haier/js/util.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            //统计购物车数量
+            $.getJSON("/shop/shopmgr.ashx?wid={$wid}&openid={$openid}&myact=pcount", function (d, status) {
+                $("#count").text(d.data);
+
+            });
+        });
+
+    </script>
+    <style>
+        .sku {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <span class="fh left"><a href="javascript:history.go(-1);">&nbsp;</a></span>
+        商品介绍
+	 	<span class="hd_right right">
+             <a class="gwc" href="{$carturl}"><span id="count"></span>&nbsp;</a>
+             <a class="right_but" href="/shop/navigate.aspx?wid={$wid}&openid={$openid}">&nbsp;</a>
+         </span>
+    </header>
+    </head>
+    <body>
+        <div id="page">
+            <!--======main=====-->
+            <div class="main">
+                <div class="details_tab">
+                    <ul>
+                        <li><a href="javascript:void(0)" id="jieshao">介绍</a></li>
+                        <li><a href="javascript:void(0)" id="guige">规格</a></li>
+                    </ul>
+                </div>
+                <div class="details_js">
+                    {$model.description}
+
+                </div>
+                <table width="100%" border="0" cellspacing="1" cellpadding="1" bgcolor="#ebebeb" id="tb">
+                    <vt:foreach from="$model.skulist" item="skulist" index="#.floor">
+                   <tr>
+	    	    <td height="30" align="left" valign="middle" bgcolor="#FFFFFF">{$skulist.attrName}</td>
+	    	    <td height="30" align="left" valign="middle" bgcolor="#FFFFFF">{$skulist.attributeValue}</td>
+	  	     
+                        </tr>
+
+             </vt:foreach>
+                    <vt:foreach from="$model.attrs" item="attrs" index="#.floor">
+                      <tr>
+                      <td height="30" align="left" valign="middle" bgcolor="#FFFFFF">{$attrs.attrName}:</td>
+                      <td height="30" align="left" valign="middle" bgcolor="#FFFFFF">{$attrs.paValue}</td>
+                        </tr>        
+                            
+             </vt:foreach>
+
+
+                </table>
+
+
+            </div>
+            <!--_share_js-->
+            <vt:template id="_bottom" file="_bottom.html" charset="utf-8" />
+            <!--/_share_js--> 
+            <script src="/scripts/weixin/wxcomm.js"></script>
+
+            <!--联系客服-->
+            <div class="tc2" style="display: none;">
+                <div class="kf_top">
+                    <p class="dh">{$shopconfig.tel}</p>
+                    <p class="tc_cg">早8:00 - 晚20:00</p>
+                </div>
+                <div class="tc_button">
+                    <ul>
+                        <li><a href="tel:{$shopconfig.tel}">拨打咨询</a></li>
+                        <li><a href="javascript:void(0)" class="lxkf_close">取消</a></li>
+                    </ul>
+                </div>
+            </div>
+            <script src="../../../scripts/jquery/jquery.query.js"></script>
+            <script type="text/javascript">
+                //获取URL参数
+                var type = $.query.get("type");
+
+                //判断URL参数
+                if (type == 1) {
+
+                    $("#tb").addClass("sku");
+                    $(".details_js").removeClass("sku");
+                    $(".details_tab li:first").addClass("on").siblings().removeClass("on");
+                }
+                else if (type == 2) {
+                    $(".details_js").addClass("sku");
+                    $("#tb").removeClass("sku");
+                    $(".details_tab li:last").addClass("on").siblings().removeClass("on");
+                }
+
+
+                //显示ul
+                $(".details_tab ul li").click(function () {
+                    $(this).addClass("on").siblings().removeClass("on");
+
+                })
+
+                //显示介绍
+                $("#jieshao").click(function () {
+                    $("#tb").addClass("sku");
+                    $(".details_js").removeClass("sku");
+                });
+
+                //显示规格
+                $("#guige").click(function () {
+                    $("#tb").removeClass("sku");
+                    $(".details_js").addClass("sku");
+                });
+
+
+
+                //联系客服打开
+                $(".lxkf").click(function () {
+                    if ($('#load_mask').length) { }
+                    else {
+                        var h = $(document.body).height() + "px";
+                        $("<div id='load_mask' class='tc_zz' style='height:" + h + "' />").appendTo("body");
+                    }
+                    $("#load_mask").show();
+                    var t = $(window).scrollTop(), h = $(window).height(), iTop = 0;
+                    iTop = ((h - $(".tc2").height()) / 2 + t) + "px";
+                    $(".tc2").css("top", iTop).show();
+
+                })
+                //联系客服关闭
+                $(".lxkf_close").click(function () {
+                    $(".tc2").hide();
+                    $("#load_mask").hide();
+                })
+            </script>
+        </div>
+
+        <!--弹出层-->
+        <div class="tc">
+            <div class="tc_top">
+                <p>添加成功！</p>
+                <p class="tc_cg">商品已成功加入购物车</p>
+            </div>
+            <div class="tc_button">
+                <ul>
+                    <li><a href="#">再逛逛</a></li>
+                    <li><a href="#">去购物车</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="tc_zz"></div>
+
+        <!--======到货通知=====-->
+        <div class="dhtz_tc" id="tongZhiCeng">
+            <header class="header"><span class="fh left"><a href="javascript:history.go(-1);">&nbsp;</a></span>到货通知</header>
+            <div class="dhtz_bottom">
+                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                    <input type="hidden" id="tzpid" name="tzpid" value="6417" />
+                    <tr>
+                        <td height="45" align="right" valign="middle" width="20%">姓   名：</td>
+                        <td height="45" align="left" valign="middle" width="80%">
+                            <input type="text" id="name" name="name" value="" class="tz_wbk"></td>
+                    </tr>
+                    <tr>
+                        <td height="45" align="right" valign="middle">邮   箱：</td>
+                        <td height="45" align="left" valign="middle">
+                            <input type="text" id="email" name="email" value="" class="tz_wbk"></td>
+                    </tr>
+                    <tr>
+                        <td height="45" align="right" valign="middle">手机号：</td>
+                        <td height="45" align="left" valign="middle">
+                            <input type="text" id="mobile" name="mobile" value="" class="tz_wbk"></td>
+                    </tr>
+                    <tr>
+                    <tr>
+                        <td height="45" colspan="2" align="center" valign="middle"><a href="javascript:void(0);" id="tj" class="tz_but">提交</a></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <script src="/shop/templates/haier/js/jquery.lazyload.js" charset="utf-8"></script>
+    </body>
+</html>

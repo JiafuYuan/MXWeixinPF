@@ -1,0 +1,84 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>{$config.sitename}</title>
+
+<meta name="viewport" content="width=device-width,height=device-height,inital-scale=1.0,maximum-scale=1.0,user-scalable=no;">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no">
+<meta charset="utf-8">
+
+<link href="/templatesstore/css/listhome10_.css" rel="stylesheet" type="text/css" /> 
+ <script src="/scripts/jquery/jquery.query.js" type="text/javascript"></script>
+    <script src="/scripts/jquery/jquery-1.10.2.min.js" type="text/javascript"></script>
+
+</head>
+<script type="text/javascript">
+    window.onload = function () {
+        var oWin = document.getElementById("win");
+        var oLay = document.getElementById("overlay");
+        var oBtn = document.getElementById("popmenu");
+        var oClose = document.getElementById("close");
+        oBtn.onclick = function () {
+            oLay.style.display = "block";
+            oWin.style.display = "block"
+        };
+        oLay.onclick = function () {
+            oLay.style.display = "none";
+            oWin.style.display = "none"
+        }
+
+       
+
+    };
+</script>
+<body id="listhome10">
+<div id="ui-header">
+<div class="fixed">
+
+<a class="ui-btn-left_pre" href="javascript:history.go(-1);"></a>
+ 
+</div>
+</div>
+
+<div class="Listpage">
+<div class="top46"></div>
+
+
+<div id="todayList">
+<ul  class="todayList">
+    <vt:foreach from="$clist" item="c" index="i">
+                                     <li >
+                                      
+                     <a href="{$c.link_url}"> <b></b> <img src="{$c.ico_url}"><div><h2>{$c.title}</h2><p>{$c.content}</p></div></a></li> 
+                                    
+                                </vt:foreach>
+       
+                       
+
+ 
+</ul>
+</div>
+
+</div>
+
+<script type="text/javascript">
+
+      function dourl(url) {
+          location.href = url;
+      }
+
+   
+   
+</script>
+
+<div class="copyright">{$config.wcopyright}</div>
+    <div style="display: none">©沐雪提供</div>
+     <script type="text/javascript">
+         mobile.o2ocn.topic.init();
+    </script>
+
+          </body>
+</html>

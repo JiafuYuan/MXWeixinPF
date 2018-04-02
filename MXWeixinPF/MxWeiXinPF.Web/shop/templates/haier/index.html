@@ -1,0 +1,242 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="author" content="Brave Chen">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" href="{$shopconfig.logo}" />
+    <title>{$shopconfig.shopName}</title>
+    <link rel="stylesheet" href="/shop/templates/haier/css/global.css">
+    <link rel="stylesheet" href="/shop/templates/haier/css/index.css">
+    <link rel="stylesheet" href="/shop/templates/haier/css/swiper.css">
+    <script src="/shop/templates/haier/js/zepto.min.js"></script>
+ 
+    <script type="text/javascript" src="/shop/templates/haier/js/mediav.js"></script>
+     
+    <script type="text/javascript">
+        $(function () {
+            //统计购物车数量
+            $.getJSON("/shop/shopmgr.ashx?wid={$wid}&openid={$openid}&myact=pcount", function (d, status) {
+                $("#count").text(d.data);
+
+            });
+        });
+
+    </script>
+</head>
+<body>
+  <!--_header-->
+    <vt:template id="header" file="_header.html" charset="utf-8" />
+<!--/_header-->	
+		<div class="wrap">
+		<div class="slide">
+			<div class="swiper-container">
+				 <ul class="swiper-wrapper">
+                    <vt:function var="hdp" method="getHdp" type="$this" rows="10" />
+                    <vt:foreach from="$hdp" item="p" index="i">
+                  
+                  	<li class="swiper-slide">
+						<a href="{$p.bannerLinkUrl}">
+							<img src="{$p.bannerPicUrl}" />
+						</a>
+					</li>
+                        
+                         </vt:foreach>
+
+                </ul>
+			</div>
+			<div class="pagination"></div>
+		</div>
+				<div class="category">
+				<div class="swiper-container">
+				<ul class="swiper-wrapper">
+
+                          <!--分类信息 -->
+                 
+                    <vt:function var="category" method="getCategory" type="$this" />
+                      <vt:foreach from="$category" item="#.data" index="i" groupsize="4">
+                    <li class="swiper-slide">
+                      <vt:foreach from="$#.data" item="#.item" index="#.j">
+
+                         <vt:if var="item.link_url" value="" compare="==">
+                     <a href="{$item.id call='GetNewsUrl'}" class="ciw-btn">
+                    <vt:else>
+                     <a href="{$item.link_url}" class="ciw-btn">
+                     </vt:if>    
+                           
+                   <img src="{$item.ico_url}" class="ci-ciw-btn fridge-icon"/> 
+                         <span class="w-ciw-btn">{$item.title}</span>
+                     </a>
+                     
+                       
+                        </vt:foreach>
+
+                    </li>
+                      </vt:foreach>
+                    <!--分类信息 end -->
+
+                </ul>
+					
+				
+			</div>
+			<div class="pagination"></div>
+		</div>
+				<div class="tc">
+			<div class="tc-head">
+				<div class="tc-icon">
+					<span></span>
+					<span></span>
+					<span></span>
+				</div>
+				<div class="tc-title">新品首发</div>
+			</div>
+			<div class="tc-body">
+                <ul class="product-new clearfix">
+
+                    <vt:function var="hdp" method="getLatest" type="$this" rows="2" />
+
+                    <vt:foreach from="$hdp" item="p" index="i">
+                         <li class="item-product-new">
+                    <div class="wrap">
+                            <a class="img-product-new" href="{$p.link_url}">
+                                <img src="{$p.productpic}" width="50" height="70" alt="pic">
+                            </a>
+                            <div class="info-product-new">
+                                {$p.productName}
+                                <br>
+                                <div><span>{$p.sku}</span></div>
+                            </div>
+                        </div>
+              
+                         </li>
+                       </vt:foreach>
+
+
+                </ul>
+				</div>
+		</div>
+				
+				<div class="tc">
+			<div class="tc-head">
+				<div class="tc-icon">
+					<span></span>
+					<span></span>
+					<span></span>
+				</div>
+				<div class="tc-title clearfix">
+					<span class="fl">热卖</span>
+					<a class="fr" href="/shop/list.aspx?wid={$wid}&openid={$openid}&cid=0">更多优惠></a>
+					<div  ></div>
+					</div>
+			</div>
+			<div class="tc-body">
+                    <ul class="soon-buy">
+                    <vt:function var="hdp" method="getHotsalet" type="$this" rows="2"  />
+                    <vt:foreach from="$hdp" item="p" index="i">
+                  
+                  	
+                        <li class="product-soon-buy clearfix">
+                        <a class="img-product" href="{$p.link_url}">
+                            <img src="{$p.productpic}" alt="pic">
+                        </a>
+                        <a class="gotocart-btn" href="{$p.link_url}">立即抢购</a>
+                        <div class="info-product">
+                            <div class="product-name">
+                                {$p.productName} {$p.sku}
+                            </div>
+                            <div class="product-price">
+                                <span><small>&yen;</small>{$p.salePrice}</span>
+                                <del><small>&yen;</small>{$p.marketPrice}</del>
+                            </div>
+                        </div>
+                    </li>
+                         </vt:foreach>
+
+                </ul>
+			
+			</div>
+		</div>
+				
+				<div class="tc">
+			<div class="tc-head">
+				<div class="tc-icon">
+					<span></span>
+					<span></span>
+					<span></span>
+				</div>
+				<div class="tc-title">推荐</div>
+			</div>
+			<div class="tc-body">
+               
+					 <vt:function var="hdp" method="getRecommended" type="$this" rows="1"/>
+                   <vt:foreach from="$hdp" item="p" index="i">
+                 
+                <div class="product">
+                    
+                    <div class="item-product">
+                        <a href="{$p.link_url}">
+                            <img src="{$p.productpic}" width="100%" alt="pic">
+                        </a>
+                        <div class="clearfix info-product">
+                            <div class="fl">
+                                <span> {$p.productName} </span>
+                                <strong>{$p.sku}</strong>
+                            </div>
+                            <div class="fr"><small>&yen;</small>{$p.salePrice}</div>
+                        </div>
+                    </div>
+               </div>
+                </vt:foreach>
+						</div>
+		</div>
+						<div class="tc">
+			<div class="tc-head">
+				<div class="tc-icon">
+					<span></span>
+					<span></span>
+					<span></span>
+				</div>
+				<div class="tc-title">特价</div>
+			</div>
+			<div class="tc-body">
+                <vt:function var="hdp" method="getSpecialOffer" type="$this" rows="8"  />
+                   <vt:foreach from="$hdp" item="p" index="i">
+                 
+                <div class="product">
+                    
+                    <div class="item-product">
+                        <a href="{$p.link_url}">
+                            <img src="{$p.productpic}" width="100%" alt="pic">
+                        </a>
+                        <div class="clearfix info-product">
+                            <div class="fl">
+                                <span> {$p.productName} </span>
+                                <strong>{$p.sku}</strong>
+                            </div>
+                            <div class="fr"><small>&yen;</small>{$p.salePrice}</div>
+                        </div>
+                    </div>
+              </div>
+                </vt:foreach>
+                
+	</div>
+    	</body>
+
+               <input type="hidden" value="{$wid}" id="hidwid" name="hidwid">
+              <input type="hidden" value="{$openid}" id="openid" name="openid">
+   
+    <!--_share_js-->
+       <vt:template id="_bottom" file="_bottom.html" charset="utf-8" />
+    <!--/_share_js-->
+<script src="/shop/templates/haier/js/zepto.countdown.js"></script>
+<script src="/shop/templates/haier/js/zepto.hotdot.js"></script>
+<script src="/shop/templates/haier/js/swiper-2.4.min.js"></script>
+<script src="/shop/templates/haier/js/index.js"></script> 
+</html>
+

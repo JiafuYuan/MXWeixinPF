@@ -1,0 +1,21 @@
+.content-slide>a .mbg {
+margin: 0 auto;
+width: 80px;
+height: 80px;
+border-radius: 100%;
+}
+.device {height: 240px;}
+.swiper-container {height: 205px;}
+.ico img {margin-top: 10px;width: 40px;
+height: 40px;}
+
+
+#cate75  .content-slide>a:nth-child(6n+1) .mbg { background-color:rgba(210,170,84,0.9)}
+#cate75  .content-slide>a:nth-child(6n+2) .mbg { background-color:rgba(108,160,182,0.9)}
+#cate75  .content-slide>a:nth-child(6n+3) .mbg{ background-color:rgba(129,165,93,0.9)}
+#cate75  .content-slide>a:nth-child(6n+4) .mbg { background-color:rgba(209,109,82,0.9)}
+
+#cate75  .content-slide>a:nth-child(6n+5) .mbg { background-color:rgba(109,108,168,0.9)}
+#cate75  .content-slide>a:nth-child(6n+6) .mbg{ background-color:rgba(196,126,184,0.9)}
+
+#cate75  .content-slide>a .title {color: #fff;}

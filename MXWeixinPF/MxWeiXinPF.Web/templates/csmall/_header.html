@@ -1,0 +1,38 @@
+﻿  <style>{$config.topht}</style>
+<script>
+    window.onload = function () {
+        var oWin = document.getElementById("win");
+        var oLay = document.getElementById("overlay");
+        var oBtn = document.getElementById("popmenu");
+        var oClose = document.getElementById("close");
+        oBtn.onclick = function () {
+            oLay.style.display = "block";
+            oWin.style.display = "block"
+        };
+        oLay.onclick = function () {
+            oLay.style.display = "none";
+            oWin.style.display = "none"
+        }
+    };
+</script>
+
+<!-- {$thisurl}-->
+    <div id="ui-header">
+        <div class="fixed">
+            <a class="ui-title" id="popmenu">选择分类</a>
+            <a class="ui-btn-left_pre" href="javascript:history.go(-1);"></a>
+            <a class="ui-btn-right" href="javascript:doPageurl(1);"></a>
+        </div>
+    </div>
+    <div id="overlay"></div>
+    <div id="win">
+        <ul class="dropdown">
+             <vt:function var="tcategory" method="getAllCateMenu" type="$this"  />
+                <vt:foreach from="$tcategory" item="t" index="i">
+                    <li><a href="{$t.link_url}"><span>{$t.title}</span></a></li>
+                </vt:foreach>
+            
+
+            <div class="clr"></div>
+        </ul>
+    </div>

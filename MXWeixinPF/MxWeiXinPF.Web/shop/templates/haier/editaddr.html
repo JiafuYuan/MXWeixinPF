@@ -1,0 +1,225 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="author" content="m.ehaier.com">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" name="viewport" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+    <meta content="telephone=no" name="format-detection" />
+    <meta content="false" id="twcClient" name="twcClient" />
+    <link type="text/css" rel="stylesheet" href="/shop/templates/haier/css/style.css">
+    <link type="text/css" rel="stylesheet" href="/shop/templates/haier/css/style_1.css">
+    <link rel="apple-touch-icon-precomposed" href="{$shopconfig.logo}" />
+    <link rel="shortcut icon" type="image/x-icon" href="{$shopconfig.logo}" />
+    <script type="text/javascript" src="/shop/templates/haier/js/zepto.js"></script>
+    <script type="text/javascript" src="/shop/templates/haier/js/gs.js"></script>
+    <script type="text/javascript" src="/shop/templates/haier/js/mediav.js"></script>
+    <title>新增收货地址</title>
+    <link type="text/css" rel="stylesheet" href="/shop/templates/haier/css/member.css">
+    <script type="text/javascript" src="/shop/templates/haier/js/selector.js"></script>
+    <script type="text/javascript" src="/shop/templates/haier/js/touch.js"></script>
+    <script type="text/javascript" src="/shop/templates/haier/js/util.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            //统计购物车数量
+            $.getJSON("/shop/shopmgr.ashx?wid={$wid}&openid={$openid}&myact=pcount", function (d, status) {
+                $("#count").text(d.data);
+
+            });
+        });
+
+    </script>
+</head>
+<body>
+    <header class="header">
+        <span class="fh left"><a href="javascript:history.back(1)">&nbsp;</a></span>		地址添加
+	 	<span class="hd_right right">
+             <a class="gwc" href="/mobile/cart/myCart.html"><span id="count"></span>&nbsp;</a>
+             <a class="right_but" href="/shop/navigate.aspx?wid={$wid}&openid={$openid}">&nbsp;</a>
+         </span>
+    </header>
+
+    <div id="page">
+
+        <div class="main">
+
+            <form action="editaddr.aspx?myact=editAddr" name="form1" onsubmit="return form1_submit()" method="POST">
+                <input type="hidden" value="{$openid}" id="openid" name="openid">
+                <input type="hidden" value="{$wid}" id="wid" name="wid">
+                <input type="hidden" value="{$frompage}" id="frompage" name="frompage">
+                <table class="table_form" border="0" cellspacing="0" cellpadding="0">
+                    <tr>
+                        <th>收货人名：</th>
+                        <td>
+                            <input name="name" type="text" id="name" maxlength="30" value="{$addrinfo.contractPerson}" /><br>
+                        </td>
+                    </tr>
+                    <tr style="display: none;" height="">
+                        <th></th>
+                        <td id="conMsg" style="text-align: left; color: red;"></td>
+                    </tr>
+                    <tr>
+                        <th>手机号码：</th>
+                        <td>
+                            <input name="mobile" type="text" id="mobile" value="{$addrinfo.tel}" style="border: 1px solid #ececec;height: 40px;line-height: 40px;width: 100%;text-indent: 10px;"/>
+                        </td>
+                    </tr>
+                    <tr style="display: none;">
+                        <th></th>
+                        <td id="mobileNumMsg" style="text-align: left; color: red;"></td>
+                    </tr>
+                    <tr>
+                        <th>配送区域：</th>
+                        <td>
+                            <div>
+                                <span id="sprovince" data-url="/shop/shopmgr.ashx?myact=getCity">
+                                    <select name="pvid" id="province" class="lizselect_box">
+                                        <option value="-1">选择省</option>
+                                    </select>
+                                </span>
+                                <span id="scity" data-url="/shop/shopmgr.ashx?myact=getArea">
+                                    <select name="ctid" id="city" class="lizselect_box">
+                                        <option value="-1">选择市</option>
+
+                                    </select></span>
+                                <span>
+                                    <select name="regionId" id="regionId" class="lizselect_box">
+                                        <option value="-1">选择区</option>
+
+                                    </select></span>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th valign="top" style="height: 110px;">详细地址：</th>
+                        <td style="height: 110px;">
+                            <input style="height: 60px;" name="address" type="text" id="delivery" maxlength="50" class="mod_input flex_box" placeholder="详细地址" value="{$addrinfo.addrDetail}" />
+
+                        </td>
+                    </tr>
+                    <tr style="display: none;">
+                        <th></th>
+                        <td id="deliveryMsg" style="text-align: left; color: red;"></td>
+                    </tr>
+                    <tr style="display: none;">
+                        <th></th>
+                        <td id="zipCodeMsg" style="text-align: left; color: red;"></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <input type="submit" class="submit" value="保存收货地址"></input></td>
+                    </tr>
+                </table>
+            </form>
+
+            <script type="text/javascript" src="/shop/templates/haier/js/order.js"></script>
+            <script src="/shop/templates/default/js/zepto.min.js"></script>
+            <script type="text/javascript">
+
+                $(function () {
+                    $("#province").val("{$addrinfo.province}");
+                    $("#city").val("{$addrinfo.city}");
+                    $("#regionId").val("{$addrinfo.area}");
+                  })
+            </script>
+            <script type="text/javascript">
+                mobile.o2ocn.address.init();
+            </script>
+            <script type="text/javascript">
+                function form1_submit() {
+                    var phoneNum = $("#mobile").val();
+                    var name = $("#name").val();
+
+                    if (name == "") {
+                        alert("您还没有输入收件人！")
+                        document.form1.name.focus()
+                        return false;
+                    }
+                    else if (phoneNum == "") {
+                        alert("您还没有输入手机号码！")
+                        document.form1.mobile.focus()
+                        return false
+                    }
+                    else if (phoneNum != null && phoneNum != "") {
+                        if (!isMobileNO(phoneNum)) {
+                            alert("您输入手机号码错误！");
+                            document.form1.mobile.focus();
+                            return false;
+                        }
+                    }
+                   
+                   
+                    if ($("#city").val() < 0 || $("#city").val()=="") {
+                        alert("你未选择城市");
+                       return false;
+                    }
+                   
+                    if ($("#regionId").val() < 0 || $("#regionId").val()=="") {
+                        alert("你未选择区");
+                        return false;
+                    }
+                    if (document.form1.address.value == "") {
+                        alert("您还没有输入详细收货地址！")
+                        document.form1.address.focus()
+                        return false;
+                    }
+                }
+                //手机号校验
+                function isMobileNO(mobileNum) {
+                    var pattern = new RegExp("^((13[0-9])|(14[57])|(15[^4,\\D])|(18[0-9]))\\d{8}$");
+                    if (!pattern.test(mobileNum)) {
+                        return false;
+                    }
+                    return true;
+                }
+
+            </script>
+
+
+        </div>
+
+    </div>
+     <!--_share_js-->
+       <vt:template id="_bottom" file="_bottom.html" charset="utf-8" />
+    <!--/_share_js-->
+   
+
+    <!--联系客服-->
+    <div class="tc2" style="display: none;">
+        <div class="kf_top">
+            <p class="dh">4008-281-919</p>
+            <p class="tc_cg">早8:00 - 晚20:00</p>
+        </div>
+        <div class="tc_button">
+            <ul>
+                <li><a href="tel:4008-281-919">拨打咨询</a></li>
+                <li><a href="javascript:void(0)" class="lxkf_close">取消</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+
+        //联系客服打开
+        $(".lxkf").click(function () {
+            if ($('#load_mask').length) { }
+            else {
+                var h = $(document.body).height() + "px";
+                $("<div id='load_mask' class='tc_zz' style='height:" + h + "' />").appendTo("body");
+            }
+            $("#load_mask").show();
+            var t = $(window).scrollTop(), h = $(window).height(), iTop = 0;
+            iTop = ((h - $(".tc2").height()) / 2 + t) + "px";
+            $(".tc2").css("top", iTop).show();
+
+        })
+        //联系客服关闭
+        $(".lxkf_close").click(function () {
+            $(".tc2").hide();
+            $("#load_mask").hide();
+        })
+    </script>
+</body>
+</html>

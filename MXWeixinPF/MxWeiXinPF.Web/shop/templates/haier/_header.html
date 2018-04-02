@@ -1,0 +1,51 @@
+﻿  <div class="" id="hotdot-nav">
+        <div class="hotdot-wrap">
+            <div class="hotdot"></div>
+        </div>
+        <menu>
+            <a href="{$indexurl}" class="homepage-menu">
+                <div>首页</div>
+            </a>
+            <a href="/shop/list.aspx?wid={$wid}&openid={$openid}&cid=0" class="search-menu">
+                <div>搜索</div>
+            </a>
+            <a href="javascript:;" class="category-menu">
+                <div>分类</div>
+            </a>
+            <a href="/shop/userinfo.aspx?wid={$wid}&openid={$openid}" class="order-menu">
+                <div>订单</div>
+                <i>4</i></a>
+           </menu>
+    </div>
+    <header id="header" class="">
+        <a class="navbar fl" href="javascript:;">
+            <span></span>
+            <span></span>
+            <span></span>
+        </a>
+        <div class="fr">
+            <a class="search fl" href="/shop/list.aspx?wid={$wid}&openid={$openid}&cid=0"></a>
+                <a class="cart fl" href="{$carturl}"><i id="count"></i></a>
+        </div>
+        <a class="logo" href="#">
+            <img src="{$shopconfig.logo}" width="75" alt="logo"></a>
+        <nav>
+            <div class="toolbar-nav">
+                <a class="close fl" href="javascript:;">&times</a>
+                <div class="fr">
+                    <a class="search fl" href="/shop/list.aspx?wid={$wid}&openid={$openid}&cid=0"></a>
+                </div>
+                <span>分类</span>
+            </div>
+
+            <!--分类信息 -->
+            <vt:function var="category" method="getCategory" type="$this" />
+            <vt:foreach from="$category" item="c" index="i">
+                             <a class="ciw-btn" href="{$c.link_url}">
+                            <img src="{$c.ico_url}" class="ci-ciw-btn fridge-icon" />
+                       <span class="w-ciw-btn">{$c.title}</span>
+                                 </a>
+                        </vt:foreach>
+            <!--分类信息 end -->
+        </nav>
+    </header>

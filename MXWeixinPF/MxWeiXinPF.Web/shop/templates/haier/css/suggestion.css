@@ -1,0 +1,18 @@
+
+.search{height:42px; line-height:42px; margin:10px; padding-right:50px; position:relative;}
+.icon_search {display:block; width:53px; height:40px; border:1px solid #e0e0e0; background-color:#ebebeb;background-position:6px -208px; position:absolute; right:0; top:0;-webkit-border-radius:5px;-moz-border-radius:5px;-ms-border-radius:5px;-o-border-radius:5px;border-radius:5px; z-index:100;}
+.icon_wrong {background-position:-52px -216px;}
+#sousuo_index{-webkit-border-radius:5px;-moz-border-radius:5px;-ms-border-radius:5px;-o-border-radius:5px;border-radius:5px;}
+.search-input{ position:relative;}
+
+.ui-suggestion-mask{position: relative;z-index: 100;display: -webkit-box; width:100%;}
+.ui-suggestion-mask input{-webkit-box-flex: 1;display: block; -webkit-border-radius:5px;-moz-border-radius:5px;-ms-border-radius:5px;-o-border-radius:5px;border-radius:5px;}
+.ui-suggestion{position: absolute;display: none;z-index: 100;width: 100%;-webkit-box-sizing: border-box;left:0;}
+.ui-suggestion ul li{position: relative;}
+.ui-suggestion-button{ background:#ebebeb;height:50px; line-height:50px; text-align:center; border-bottom:1px #e0e0e0 solid; overflow:hidden;}
+.ui-suggestion-button span{display:inline-block;}
+.ui-suggestion .ui-suggestion-plus{position: absolute;}
+.ui-suggestion-content a,#sou_default a,.ui-suggestion-close{ display:block; width:100%; border-bottom:1px #e0e0e0 solid; height:50px; line-height:50px; background:#ffffff; text-align:left; text-indent:20px;}
+
+#sou_default{ position:absolute; z-index:99; display:none; width:100%;}
+.ui-suggestion-button a{ background:#ebebeb; color:#606060; text-align:center;}

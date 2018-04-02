@@ -1,0 +1,6 @@
+
+#cate74  .content-slide>a .title {color: #fff;}
+#cate74  .content-slide>a:nth-child(4n+1) .mbg { background-color:rgba(210,170,84,0.9)}
+#cate74  .content-slide>a:nth-child(4n+2) .mbg { background-color:rgba(108,160,182,0.9)}
+#cate74  .content-slide>a:nth-child(4n+3) .mbg{ background-color:rgba(129,165,93,0.9)}
+#cate74  .content-slide>a:nth-child(4n+4) .mbg { background-color:rgba(209,109,82,0.9)}

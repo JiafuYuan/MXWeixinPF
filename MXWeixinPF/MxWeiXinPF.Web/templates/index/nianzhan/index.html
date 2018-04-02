@@ -1,0 +1,143 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>{$config.sitename}</title>
+
+
+<link rel="stylesheet" href="/templatesstore/css/mobile-style.css" type="text/css">
+
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" name="viewport">
+ <script src="/scripts/jquery/jquery-1.10.2.min.js" type="text/javascript"></script>
+ <script src="/templatesstore/js/swipe_1.js" type="text/javascript"></script>
+
+<script src="/templatesstore/js/jquery.fancybox.pack.js"></script>
+<script src="/templatesstore/js/common_fun.js"></script>
+<script src="/templatesstore/js/common_mobile.js"></script>
+<script defer src="/templatesstore/js/jquery.flexslider.js"></script>
+    <style type="text/css">
+        header h1 {
+
+background: #079503 url({$config.bgpic}) no-repeat left top;
+}
+
+    </style>
+   
+</head>
+<body>
+<header>
+	<a href="/index.aspx?wid={$wid}&openid={$openid}"><h1>{$config.sitename}</h1></a>
+	<div class="menu">
+		<span class="iconMenu">菜单</span>
+	</div>
+</header>
+<div id="wrap">
+			<div class="flexslider" style="margin-bottom:10px;">
+                <ul class="slides front-flex-slides">
+                     <vt:function var="hdp" method="getHdp" type="$this" rows="10" />
+                    <vt:foreach from="$hdp" item="p" index="i">
+                         
+                    <li><a href="{$p.link_url}"><img src="{$p.img_url}"></a></li>
+                       
+                       </vt:foreach>
+                   
+
+					  
+            </ul>
+		</div>
+
+<div class="conter front">
+<section>
+	<table>
+           <vt:function var="category" method="getCategory" type="$this" classlayer="1"/>
+                <vt:foreach from="$category" item="#.data" index="i" groupsize="3">
+             
+                    <tr>
+                        
+                         <vt:foreach from="$#.data" item="#.item" index="#.j"> 
+                             <td>
+                                 <a href="{$item.link_url}" class="tabIcon ">
+                    
+                               <img src="{$item.ico_url}" />
+                                 <span>{$item.title}</span>
+                   
+                                  </a>
+
+                             </td>
+
+
+                        </vt:foreach>
+                       </tr>
+                   
+               </vt:foreach>
+
+		
+	</table>
+
+</section>
+</div>
+
+</div>	
+
+<footer>&copy; {$config.wcopyright}</footer>
+     <div style="display: none">©沐雪提供</div>
+<div class="extra" id="options">
+	<table>
+		<vt:function var="category" method="getCategory" type="$this" classlayer="1"/>
+                <vt:foreach from="$category" item="#.data" index="i" groupsize="3">
+             
+                    <tr>
+                     <vt:foreach from="$#.data" item="#.item" index="#.j">
+                           
+                     <td>
+                         <a href="{$item.link_url}" class="tabIcon">
+                         <img src="{$item.ico_url}" />
+                         <span>{$item.title}</span>
+                          </a>
+                     </td>
+                        </vt:foreach>
+                       </tr>
+                   
+               </vt:foreach>
+
+	</table>
+    <div class="closeextra"><a href="javascript:void(0);" id="lnkcloseextra" ></a></div>
+</div>
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+
+        var closed = true;
+        $(".iconMenu").click(function (e) {
+            if (closed) {
+                $("#options").slideDown(500);
+                closed = false;
+            }
+            else {
+                $("#options").slideUp(500);
+                closed = true;
+            }
+        });
+        $("#lnkcloseextra").click(function (e) {
+            $("#options").slideUp(500);
+            closed = true;
+        });
+        var width = $(window).width();
+        var height = Math.round(260 * width / 670);
+        $(".front-flex-slides").css('max-height', height);
+        $('.flexslider').flexslider({
+            animation: "slide",
+            start: function (slider) {
+                $('body').removeClass('loading');
+            }
+        });
+
+    });
+
+
+</script>
+
+</body>
+</html>

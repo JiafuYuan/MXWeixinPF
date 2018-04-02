@@ -1,0 +1,21 @@
+#cate6 {
+background-color: #151515;
+}
+#cate6 .mainmenu li.li1 {
+background-color: #333333;
+}
+#cate6 .mainmenu li.li1 .menubtn {
+color: #999999;
+}
+#cate6 .mainmenu li.li2 .menubtn {
+color: #999999;
+}
+#cate6 .mainmenu li.li3 .menubtn {
+color: #999999;
+}
+#cate6 .mainmenu li.li2 {
+background-color: #333333;
+}
+#cate6 .mainmenu li.li3 {
+background-color: #333333;
+}

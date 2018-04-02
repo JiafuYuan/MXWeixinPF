@@ -1,0 +1,226 @@
+﻿
+	<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+	<meta name="author" content="m.ehaier.com">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" name="viewport"  />
+	<meta name="format-detection" content="telephone=no" />
+	<meta content="yes" name="apple-mobile-web-app-capable" />
+	<meta content="black" name="apple-mobile-web-app-status-bar-style" />
+	<meta content="telephone=no" name="format-detection" />
+	<meta content="false" id="twcClient" name="twcClient" />
+	<link type="text/css" rel="stylesheet" href="/shop/templates/haier/css/style_1.css">
+	<link rel="apple-touch-icon-precomposed" href="{$shopconfig.logo}"/>	
+	<link rel="shortcut icon" type="image/x-icon" href="{$shopconfig.logo}"/>  
+	<script type="text/javascript" src="/shop/templates/haier/js/zepto.js"></script>
+	<script type="text/javascript" src="/shop/templates/haier/js/gs.js"></script>
+	<script type="text/javascript" src="/shop/templates/haier/js/mediav.js"></script>
+		<title>订单确认</title>
+	<link type="text/css" rel="stylesheet" href="/shop/templates/haier/css/style_1.css">
+	<link type="text/css" rel="stylesheet" href="/shop/templates/haier/css/member.css">
+	<link type="text/css" rel="stylesheet" href="/shop/templates/haier/css/Details.css">
+	<!--组件依赖css begin-->
+    <link rel="stylesheet" type="text/css" href="/shop/templates/haier/csst/panel.css" />
+    <link rel="stylesheet" type="text/css" href="/shop/templates/haier/css/panel.default.css" />
+	<!--组件依赖js begin-->
+	<script type="text/javascript" src="/shop/templates/haier/js/selector.js"></script>
+	<script type="text/javascript" src="/shop/templates/haier/js/util.js"></script>
+	<!--组件依赖js begin-->
+    <script type="text/javascript" src="/shop/templates/haier/js/throttle.js"></script>
+    <script type="text/javascript" src="/shop/templates/haier/js/iscroll.js"></script>
+    <script type="text/javascript" src="/shop/templates/haier/js/event.scrollStop.js"></script>
+    <script type="text/javascript" src="/shop/templates/haier/js/event.ortchange.js"></script>
+    <script type="text/javascript" src="/shop/templates/haier/js/touch.js"></script>
+    <script type="text/javascript" src="/shop/templates/haier/js/matchMedia.js"></script>
+    <script type="text/javascript" src="/shop/templates/haier/js/gmu.js"></script>
+    <script type="text/javascript" src="/shop/templates/haier/js/event.js"></script>
+    <script type="text/javascript" src="/shop/templates/haier/js/widget.js"></script>
+    <script type="text/javascript" src="/shop/templates/haier/js/panel.js"></script>
+    <script type="text/javascript">
+        var basePath = "{$yuming}", baseParam = "";
+ </script>
+    <!--组件依赖js end-->
+</head>
+<body>
+	<div id="page">
+		<header class="header">
+  		<span class="fh left"><a href="javascript:history.back(1)">&nbsp;</a></span> 填写订单 <span class="hd_right right">
+		<a class="gwc" href="{$carturl}"><span id="count"></span>&nbsp;</a>
+		<a class="right_but" href="/shop/navigate.aspx?wid={$wid}&openid={$openid}">&nbsp;</a>
+</span>
+  		</header>
+  		<form id="orderForm">
+			<!-- <input type="hidden" id="payWay" name="payWay" value="${payWay}" />
+			<input type="hidden" id="delivery" name="delivery" value="${delivery}" />
+			<input type="hidden" id="productId" name="productId" value="${productId}" />
+			<input type="hidden" id="productCount" name="productCount" value="${productCount}" />
+			<input type="hidden" id="activityId" name="activityId" value="${activityId}" /> -->
+			<input type="hidden" id="proRegion" name="proRegion" value="${ordersCommitWrapM.region}" />
+  		<div class="main">
+    		<div class="Login">
+		      	<div class="address_top">
+        			<div class="address_t order_top">收货人信息</div>
+        			<div class="address_b order_xx" style="cursor:pointer;" onclick="toChooseAddress();">
+          				<p><span>收货人：&nbsp;&nbsp;&nbsp;&nbsp;</span>{$addrinfo.contractPerson}</p>
+          				<p><span>联系电话：</span>{$addrinfo.tel}</p>
+          				<p id="p"><span>收货地址：</span>{$addrinfo.province}{$addrinfo.city}{$addrinfo.area}{$addrinfo.addrDetail}</p>
+          				<input type="hidden" id="region" name="region" value="1290" />
+          				<a class="micon order_more"></a> 
+        			</div>
+      			</div>
+      			<div class="address_nr">
+        			<div class="address_top">
+          			<div class="address_t order_top">支付方式</div>
+          			<div class="address_b order_xx" style="cursor:pointer;" >
+            			<select evttag="changePay" class="mod_select" id="payid">
+                            <option value="-1">请选择支付方式</option>
+                            <vt:foreach from="$payment" item="pay" index="i">
+                                  <option value="{$pay.pTypeId}" ">{$pay.title}</option>
+                             </vt:foreach>
+                        </select>
+           				</div>
+        		</div>
+        		<div class="address_nr">
+        			<div class="address_top">
+          			<div class="address_t order_top">配送方式</div>
+          			<div class="address_b order_xx" style="cursor:pointer;" >
+          				  <select data-price="160120" evttag="sendType" id="select_shipFee" class="mod_select">
+                            <vt:foreach from="$express" item="exp" index="i">
+                                    <option value="{$exp.express_fee}" mtype="{$exp.id}" ptype="0">{$exp.title}: ￥{$exp.express_fee}元</option>
+                                  </vt:foreach>
+                        </select>
+        			</div>
+        		</div>
+      			<div class="address_nr">
+        			
+      			</div>
+      			<div class="address_nr">
+       				<div class="address_top"> 
+                           <div class="address_t order_top">商品清单</div>
+                            <vt:foreach from="$cartlist" item="cproduct" index="i">
+                               
+          				        <div class="address_b">
+	            			<p><span>{$cproduct.productName} {$cproduct.skuInfo}</span></p>
+	            			<p>价格：<span class="order_color">￥{$cproduct.avgPrice}</span></p>
+				            <p>数量：<span class="order_color" id="num">{$cproduct.productNum}</span></p>
+				            							<p>小计：<span class="order_color">￥{$cproduct.totPrice}</span></p>
+	          			</div>
+                          
+                     </vt:foreach>
+          				
+	          			          			
+	          			        			</div>
+      			</div>
+      		<div class="address_nr">
+        		<div class="address_top decoration-tmp">
+          			<div class="address_b order_xx">
+            			<p >订单总计：<font style="color:#d71249;">￥</font><span class="order_color" id="zji">{$alltot_y}</span></p>
+            		</div>	
+                    <div class="address_b order_xx">
+            			<p>应付金额：<font style="color:#d71249;">￥</font><span class="order_color" id="yfu"></span></p>
+            		</div>
+       			</div>
+      		</div>
+      		
+	      	<div class="address_button"> 
+				<a href="javascript:void(0);" id="orderSubmit" class="submit">提交订单</a>
+				<a href="javascript:void(0);" class="submit submiting" style="display:none;">快速提交中...</a> 
+		  	</div>
+		</div>
+		</form>
+	</div>
+	<script type="text/javascript" src="/shop/templates/haier/js/order.js"></script>
+    <script src="/shop/templates/default/js/zepto.min.js"></script>
+    
+	<script type="text/javascript">
+	    var pay = "";
+	    $("#payid").change(function () {
+	        pay = $("#payid").val();
+
+	    });
+
+	    var yunfei = "";
+	    var type = "";
+	    $(function () {
+
+	        $("#select_shipFee").change(function () {
+	            yunfei = $("#select_shipFee").val();
+	            //应付金额
+	            var zji = $("#zji").text();
+	            yifu = parseInt(yunfei) + parseInt(zji);
+	            $("#yfu").text(parseInt(yifu));
+	          
+	        });
+	       
+	        //应付金额
+	        var zji = $("#zji").text();
+	        yunfei = $("#select_shipFee").val();
+	        yifu = parseInt(yunfei) + parseInt(zji);
+	        $("#yfu").text(parseInt(yifu));
+
+	        //统计购物车数量
+	        $.getJSON("/shop/shopmgr.ashx?wid={$wid}&openid={$openid}&myact=pcount", function (d, status) {
+	            $("#count").text(d.data);
+
+	        });
+
+
+	        var rpage =window.basePath+ "/shop/userinfo.aspx?wid={$wid}&openid={$openid}";
+	       //表单提交
+	        $("#orderSubmit").click(function () {
+	            type = $("#select_shipFee option:selected").attr('mtype');
+	        
+	            if (!checkOrderForm()) {
+	                return false;
+	            }
+	           
+
+	            $(this).hide();
+	            $(".submiting").show();
+	            $.getJSON("/shop/shopmgr.ashx?wid={$wid}&mtype=" + type + "&pc=" + pay + "&openid={$openid}&myact=order_save", function (d, status) {
+
+	                if (d.errCode) {
+	                    if (d.payType == 1) {
+	                        location.href = "/shop/order_success.aspx?wid={$wid}&orderid=" + d.orderid + "&openid={$openid}&rpage=" + escape(rpage) + "";
+	                    }
+	                    else {
+	                        location.href = "/api/payment/paypage.aspx?showwxpaytitle=1&paytype=shop&wid={$wid}&orderid=" + d.orderid + "&rpage=" + escape(rpage) + "";
+
+	                    }
+	                }
+	            });
+
+
+	        })
+
+	    });
+
+	    function toChooseAddress() {
+	        window.location.href = "/shop/editaddr.aspx?wid={$wid}&openid={$openid}&frompage=confirmOrder.aspx";
+
+	    }
+	    function checkOrderForm() {
+	        var type = $("#select_shipFee option").attr('mtype');
+	        if (type < 0) {
+	            alert("请选择配送方式");
+	            return false;
+	        }
+
+
+	        if (pay<0||pay=="") {
+	            alert("请选择支付方式");
+	            return false;
+	        }
+
+	        return true;
+	    }
+
+
+	</script>
+	 <!--_share_js-->
+       <vt:template id="_bottom" file="_bottom.html" charset="utf-8" />
+    <!--/_share_js-->
+</body>
+</html>
+

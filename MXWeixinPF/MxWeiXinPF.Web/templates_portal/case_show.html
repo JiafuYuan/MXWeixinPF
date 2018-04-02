@@ -1,0 +1,269 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>{$model.seo_title}</title>
+
+    <meta name="keywords" content="{$model.seo_keywords}" />
+    <meta name="description" content="{$model.seo_description}" />
+    <meta name="generator" content="uweixin" />
+    <meta name="author" content="{$config.webcompany}" />
+    <meta name="copyright" content="{$config.webcopyright}" />
+    <meta name="MSSmartTagsPreventParsing" content="True" />
+    <meta http-equiv="MSThemeCompatible" content="Yes" />
+    <base href="{$yuming}" />
+    <link rel="stylesheet" type="text/css" href="/templates_portal/css/style_2_common.css" />
+    <script src="/templates_portal/js/common.js" type="text/javascript"></script>
+    <meta name="application-name" content="{$model.seo_title}" />
+    <meta name="msapplication-tooltip" content="{$model.seo_title}" />
+    <meta name="msapplication-task" content="name={$model.title};action-uri={$yuming};icon-uri={$yuming}/favicon.ico" />
+    <style type="text/css">
+        .tips {
+            position: relative;
+            z-index: 2;
+        }
+
+            .tips:hover {
+                z-index: 3;
+                background: none;
+            }
+
+            .tips span {
+                display: none;
+                position: absolute;
+                top: 25px;
+                left: 5px;
+                width: 350px;
+                border: 1px solid #090;
+                background-color: #090;
+                box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+                border-radius: 6px;
+                padding: 6px 6px 4px 6px;
+                font-size: 12px;
+                line-height: 18px;
+                color: #fff;
+                text-align: left;
+            }
+
+            .tips:hover span {
+                display: block;
+            }
+
+            .tips span:before {
+                content: "";
+                width: 0;
+                height: 0;
+                position: absolute;
+                bottom: 100%;
+                left: 10px;
+                border-width: 0 8px 8px 8px;
+                border-style: solid;
+                border-color: #090 transparent;
+            }
+
+            .tips span:after {
+                content: "";
+                width: 0;
+                height: 0;
+                position: absolute;
+                bottom: 100%;
+                left: 12px;
+                border-width: 0 6px 6px 6px;
+                border-style: solid;
+                border-color: #090 transparent;
+            }
+    </style>
+</head>
+
+<body id="nv_member" class="pg_CURMODULE" onkeydown="if(event.keyCode==27) return false;">
+    <!--_header-->
+    <vt:template id="header" file="_header.html" charset="utf-8" />
+    <!--/_header-->
+    <div id="aaa"></div>
+    <link href="/templates_portal/css/style.css" rel="stylesheet" type="text/css" />
+    <div id="wp" class="wp">
+
+        <style type="text/css">
+            <!--
+            .main {
+                float: left;
+            }
+
+            #table {
+                width: 100%;
+                background: #ffffff;
+                overflow: auto;
+            }
+
+            .menubg {
+                float: left;
+                width: 184px;
+                background: url(/templates_portal/images/current-.gif) repeat-y 170px top;
+            }
+
+            .menu0 {
+                width: 170px;
+                clear: both;
+                float: left;
+            }
+
+                .menu0 div a {
+                    display: block;
+                    padding: 4px 0px 5px 0px;
+                }
+
+                .menu0 div.hover a {
+                    color: #FFFFFF;
+                    display: block;
+                }
+
+                .menu0 div {
+                    display: block;
+                    float: left;
+                    display: block;
+                    width: 170px;
+                    text-align: left;
+                    text-indent: 15px;
+                    cursor: pointer;
+                    color: #000000;
+                    border-bottom: 1px solid #EEEEEE;
+                    font-size: 14px;
+                }
+
+                    .menu0 div.hover {
+                        display: block;
+                        float: left;
+                        display: block;
+                        text-align: left;
+                        text-indent: 15px;
+                        cursor: pointer;
+                        color: #FFFFFF;
+                        text-shadow: 0 1px 1px #467809;
+                        font-weight: bold;
+                        width: 184px;
+                        border-bottom: 1px solid #FFFFFF;
+                        background: #fff url(/templates_portal/images/current.gif) no-repeat right center;
+                    }
+
+            #main0 div {
+                margin: 0px 0 15px 18px;
+                text-decoration: none;
+                width: 540;
+                word-wrap: break-word;
+            }
+
+                #main0 div.block {
+                    margin: 22px 20px 15px 18px;
+                    display: block;
+                    text-decoration: none;
+                    width: 540;
+                    word-wrap: break-word;
+                }
+
+            h3 {
+                font-size: 20px;
+                color: #333;
+            }
+
+            .marginb {
+                margin-bottom: 15px;
+                display: block;
+            }
+
+            #mediaplayer {
+                background-color: #000000;
+                color: #FFFFFF;
+                height: 615px;
+                position: relative;
+                width: 820px;
+                top: 0;
+                right: 0;
+            }
+
+            .section p {
+                padding-top: 0;
+                margin-top: 0;
+                font-size: 12px; /*text-indent: 2em;*/
+            }
+
+            .normalContent {
+                padding: 20px;
+            }
+            -->
+        </style>
+        <script>
+            function setTab(m, n) {
+                var tli = document.getElementById("menu" + m).getElementsByTagName("div");
+                var mli = document.getElementById("main" + m).getElementsByTagName("div");
+                for (i = 0; i < tli.length; i++) {
+                    tli[i].className = i == n ? "hover" : "";
+                    mli[i].style.display = i == n ? "block" : "none";
+                }
+            }
+        </script>
+        <!--中间内容-->
+
+         <vt:set var="category_id" value="150" id="category_id" />
+        <div class="qtcontent">
+            <div class="intro">
+                <div class="normalTitle">
+                    <h2>案例展示</h2>
+                </div>
+                <div class="normalContent">
+
+                    <div class="section lastSection">
+                        <div id="table">
+                            <div class="menubg">
+                                <div class="menu0" id="menu0">
+
+                           <vt:function var="category" method="CategoryListByChannelName" type="$this" channel_name="caseshow" />
+                            <vt:foreach from="$category" item="item" index="i">
+                                   <vt:if var="item.id" value="$model.id" compare="==">
+                                       <div class="hover"><a href="/portalpage/weixin_case.aspx?cid={$item.id}">{$item.title}</a></div>
+                                    <vt:else>
+                                           <div><a href="/portalpage/weixin_case.aspx?cid={$item.id}">{$item.title}</a></div>
+                                   </vt:if>   
+                            
+                             </vt:foreach>
+                                </div>
+                            </div>
+                            <div class="main" id="main0">
+
+                                <div>
+                                      <vt:function var="article" method="getArticleByCategory" type="$this" rows="0" categoryid="$model.id"  />
+                                      <vt:foreach from="$article" item="art" index="j">
+                                          <span >
+                                        <h3>{$art.title}<br />
+                                            <span style="font-size: 12px; font-weight: normal; line-height: 1.5;">微信号：{$art.zhaiyao}</span>
+                                        </h3>
+                                    </span>
+                                           <img src="{$art.img_url}" /><br />
+                                      </vt:foreach>
+                                </div>
+
+
+                            </div>
+                        </div>
+                        <p class="clr"></p>
+                        
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+        <!--底部-->
+
+        <!--_qqline-->
+        <vt:template id="qqline" file="_qqline.html" charset="utf-8" />
+        <!--/_qqline-->
+    </div>
+
+
+    <!--_bottom-->
+    <vt:template id="bottom" file="_bottom.html" charset="utf-8" />
+    <!--/_bottom-->
+
+
+</body>
+</html>

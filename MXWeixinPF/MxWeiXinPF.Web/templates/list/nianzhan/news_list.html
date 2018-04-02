@@ -1,0 +1,166 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="cache-control" content="no-cache">
+<meta http-equiv="pragram" content="no-cache">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" name="viewport">
+    
+<meta name="keywords" content=""/>
+<meta name="description" content=""/>
+
+<title>{$config.sitename}</title>
+    
+     <script src="/scripts/jquery/jquery-1.10.2.min.js" type="text/javascript"></script>
+ <script src="/templatesstore/js/swipe_1.js" type="text/javascript"></script>
+ <link href="/templatesstore/css/listhome/listhome1_.css" rel="stylesheet" type="text/css" />
+<script src="/templatesstore/js/jquery.fancybox.pack.js"></script>
+<script src="/templatesstore/js/common_fun.js"></script>
+<script src="/templatesstore/js/common_mobile.js"></script>
+<link rel="stylesheet" href="/templatesstore/css/mobile-style.css" type="text/css">
+  <style type="text/css">
+        header h1 {
+
+background: #079503 url({$config.bgpic}) no-repeat left top;
+}
+
+    </style>
+</head>
+<body>
+<header>
+<a href="/index.aspx?wid={$wid}&openid={$openid}"><h1>{$category.title}</h1></a>
+	<div class="menu">
+		<span class="iconMenu">菜单</span>
+	</div>
+</header>
+<div id="wrap">
+        
+    
+     <div id="ContentPlaceHolder1_panMobile">
+	
+         <div class="conter">
+	        <section class="contentList newList">
+		    <h2>{$category.title}</h2>
+		<hr/>
+		<ul id="newslist">
+                   <vt:set var="orderby" value="sort_id asc,id asc" id="norderby" />
+                <vt:set var="pagesize" value="10" id="npagesize" />
+                <vt:foreach from="$newslist" item="news" index="i">
+                <li>
+                    <a href="{$news.link_url}">
+                       <h4>{$news.title}</h4>
+                       <time>{$news.add_time}</time>
+                    </a>
+                </li>
+                     <vt:foreachelse /> 
+                     <li>无数据</li>
+                </vt:foreach>
+					
+            </ul>
+            </section>
+        </div>
+    
+        <!-- 分页 start --->
+        <div class="pagination">
+            <div class=" {$bgrey} "><a {$bpage}>上一页</a></div>
+            <div class="allpage">
+                <div class="currentpage">{$currPage}/{$totPage}</div>
+                <select id="dropdown-select" name="select" onchange="doPageurl(this.value)">
+                    <select class="c-p-select" onchange="doPageurl(this.value)">
+                            <vt:for from="1" to="$totPage" index="p">
+                                <vt:if var="#.p" value="$currPage" compare="==">
+                                     <option   selected="selected"  value={$p} >第{$p}页</option>     
+                                    <vt:else>
+                                        <option   value={$p}  >第{$p}页</option>  
+                                    </vt:if>
+                                  
+                            </vt:for>
+                           
+                        </select>
+                </select>
+            </div>
+            <div class="{$ngrey} "><a {$npage}>下一页</a></div>
+        </div>
+         <!-- 分页 end --->
+
+     <script type="text/javascript">
+         function dourl(url) {
+             location.href = url;
+         }
+
+         function doPageurl(pageNum) {
+             var qianzhui = "?";
+             if (location.href.indexOf("?") >= 0) {
+                 qianzhui = "&";
+             }
+
+             var nopageurl = $.query.REMOVE("page");
+
+             var newurl = "http://" + location.host + location.pathname + nopageurl + qianzhui + "page=" + pageNum;
+             location.href = newurl;
+         }
+
+
+
+
+    </script>
+
+     
+</div>       
+
+</div>	
+<footer>&copy; {$config.wcopyright}</footer>
+     <div style="display: none">©沐雪提供</div>
+
+<div class="extra" id="options">
+	<table>
+		<vt:function var="category" method="getCategory" type="$this" classlayer="1"/>
+                <vt:foreach from="$category" item="#.data" index="i" groupsize="3">
+             
+                    <tr>
+                        
+                         <vt:foreach from="$#.data" item="#.item" index="#.j"> 
+                             <td>
+                                 <a href="{$item.link_url}" class="tabIcon ">
+                    
+                               <img src="{$item.ico_url}" />
+                                 <span>{$item.title}</span>
+                   
+                                  </a>
+
+                             </td>
+
+
+                        </vt:foreach>
+                       </tr>
+                   
+               </vt:foreach>
+
+	</table>
+    <div class="closeextra"><a href="javascript:void(0);" id="lnkcloseextra" ></a></div>
+</div>
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        var closed = true;
+        $(".iconMenu").click(function (e) {
+            if (closed) {
+                $("#options").slideDown(500);
+                closed = false;
+            }
+            else {
+                $("#options").slideUp(500);
+                closed = true;
+            }
+        });
+        $("#lnkcloseextra").click(function (e) {
+            $("#options").slideUp(500);
+            closed = true;
+        });
+    });
+
+</script>
+
+</body>
+</html>

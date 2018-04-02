@@ -1,0 +1,153 @@
+﻿
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+	<meta name="author" content="m.ehaier.com">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" name="viewport"  />
+	<meta name="format-detection" content="telephone=no" />
+	<meta content="yes" name="apple-mobile-web-app-capable" />
+	<meta content="black" name="apple-mobile-web-app-status-bar-style" />
+	<meta content="telephone=no" name="format-detection" />
+	<meta content="false" id="twcClient" name="twcClient" />
+	<link type="text/css" rel="stylesheet" href="/shop/templates/haier/css/style_1.css">
+	<link rel="apple-touch-icon-precomposed" href="{$shopconfig.logo}"/>	
+	<link rel="shortcut icon" type="image/x-icon" href="{$shopconfig.logo}"/>  
+	<script type="text/javascript" src="/shop/templates/haier/js/zepto.js"></script>
+	<script type="text/javascript" src="/shop/templates/haier/js/gs.js"></script>
+	<script type="text/javascript" src="/shop/templates/haier/js/mediav.js"></script>
+	    <title>订单详情</title>
+<link type="text/css" rel="stylesheet" href="/shop/templates/haier/css/style_1.css">
+<link type="text/css" rel="stylesheet" href="/shop/templates/haier/css/member.css">
+<link type="text/css" rel="stylesheet" href="/shop/templates/haier/css/Details.css">
+<script type="text/javascript" src="/shop/templates/haier/js/order.js"></script>
+     <script type="text/javascript">
+         $(function () {
+             //统计购物车数量
+             $.getJSON("/shop/shopmgr.ashx?wid={$wid}&openid={$openid}&myact=pcount", function (d, status) {
+                 $("#count").text(d.data);
+
+             });
+         });
+
+    </script>
+</head>
+<body>
+    <div id="page">
+        <!--======header=====-->
+        <header class="header">
+			<span class="fh left"><a href="javascript:history.back(1)">&nbsp;</a></span>			我的订单
+		 	<span class="hd_right right">
+		<a class="gwc" href="{$carturl}"><span id="count"></span>&nbsp;</a>
+       <a class="right_but" href="/shop/navigate.aspx?wid={$wid}&openid={$openid}">&nbsp;</a>
+</span>
+		</header>
+        <!--======main=====-->
+        <div class="main">
+            <div class="Login">
+            	<div class="address_nr">
+                	<div class="address_top">
+                    	<div class="address_t order_top">
+                    		订单状态：
+                    		<span>
+                    			                    					{$statusName}
+								                     		</span>
+                    	</div>
+                        <div class="address_b">
+                        	<p>订单编号：{$order.order_no}</p>
+                        	                             <p>下单时间：{$order.add_time format="yyyy-MM-dd HH:mm:ss"}</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="address_nr">
+                	<div class="address_top">
+                    	<div class="address_t order_top">收货人信息</div>
+                        <div class="address_b order_xx">
+                        	<p><span>收货人：&nbsp;&nbsp;&nbsp;&nbsp;</span>{$order.accept_name}</p>
+                        	<p><span>联系电话：</span>{$order.telphone}</p>
+                        	<p><span>收货地址：</span>{$order.address}</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="address_nr">
+                	<div class="address_top">
+                    	<div class="address_t order_top">支付方式</div>
+                        <div class="address_b">
+                        	<p>
+								{$paymentName}
+                        	</p>
+                        </div>
+                    </div>
+                </div>
+                 <div class="address_nr">
+			        <div class="address_top">
+			          <div class="address_t order_top">商品清单</div>
+			          			          	  <!-- 如为定金订单 -->
+                        <vt:foreach from="$order.order_product" item="g" index="j">
+			          	  			          	  	<div class="address_b">
+				            <p><span>{$g.productName}</span></p>
+				            <p>价格：<span class="order_color" >￥{$g.salePrice}</span></p>
+				            <p>数量：<span class="order_color" id="sliang">{$g.stock}</span></p>
+                                                              
+		            			      
+                                                                
+				          </div>
+                             </vt:foreach>
+			          	  			          			        </div>
+			      </div>
+			      
+			      <div class="address_nr">
+			        <div class="address_top">
+			          <div class="address_b order_price">
+			          	<!-- 如为定金订单 -->
+			          				          		<p>订单总计：￥{$order.order_amount}</p>
+			          				       <p>应付金额：<span class="order_color">￥{$order.order_amount}</span></p>
+			          </div>
+			        </div>
+			      </div>
+			      
+                
+            </div>
+        </div>
+      <!--_share_js-->
+       <vt:template id="_bottom" file="_bottom.html" charset="utf-8" />
+    <!--/_share_js--> 
+
+<!--联系客服-->
+<div class="tc2" style="display:none;">
+	<div class="kf_top">
+		<p class="dh">4008-281-919</p>
+		<p class="tc_cg"></p>
+	</div>
+	<div class="tc_button">
+		<ul>
+			<li><a href="tel:4008-281-919">拨打咨询</a></li>
+			<li><a href="javascript:void(0)" class="lxkf_close">取消</a></li>
+		</ul>
+	</div>
+</div>
+
+<script type="text/javascript">
+
+    //联系客服打开
+    $(".lxkf").click(function () {
+        if ($('#load_mask').length) { }
+        else {
+            var h = $(document.body).height() + "px";
+            $("<div id='load_mask' class='tc_zz' style='height:" + h + "' />").appendTo("body");
+        }
+        $("#load_mask").show();
+        var t = $(window).scrollTop(), h = $(window).height(), iTop = 0;
+        iTop = ((h - $(".tc2").height()) / 2 + t) + "px";
+        $(".tc2").css("top", iTop).show();
+
+    })
+    //联系客服关闭
+    $(".lxkf_close").click(function () {
+        $(".tc2").hide();
+        $("#load_mask").hide();
+    })
+</script></body>
+</html>

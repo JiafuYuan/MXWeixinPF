@@ -1,0 +1,7 @@
+#cate48  .mainmenu { display: block; overflow: hidden;}
+#cate48  .mainmenu li { float:left; margin-left:1%; margin-top:1%; width:48.2%; height:75px; border:1px solid  #CCC ; overflow:hidden; position:relative  }
+#cate48  .mainmenu li a { display:block;  color:#FFF;  height:75px;background-color: #ccc;overflow: hidden;}
+#cate48  .mainmenu li a img { width:auto; height: 75px; float:left;z-index:-33;}
+#cate48  .mainmenu li a p{ height:80px; width:99px; padding-right:7px; background: url(../../templatesstore/images/p_bg.png) no-repeat;  position:absolute; right:-1px;text-align:right  }
+#cate48  .mainmenu li a p b{ float:right; display:block; font-size:16px; color:#666666; font-weight:normal; margin-top:18px; line-height:20px; width:64px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap ; }
+#cate48  .mainmenu li a p span { float:right; display:block;     line-height:24px; font-size:12px; color:#9a9a9a;width:74px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }

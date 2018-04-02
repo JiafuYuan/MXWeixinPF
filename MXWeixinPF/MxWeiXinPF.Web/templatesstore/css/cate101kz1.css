@@ -1,0 +1,3 @@
+.list_uls dl dd a figure>div{display: block;}
+.list_uls dl dd {border-bottom: 1px solid rgba(255, 255, 255, 0);}
+.list_uls dl dd a {border-right: 1px solid rgba(223, 224, 225, 0);border-bottom: 1px solid rgba(223, 224, 225, 0);}

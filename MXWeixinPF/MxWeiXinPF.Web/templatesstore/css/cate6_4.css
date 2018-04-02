@@ -1,0 +1,243 @@
+html, body {
+	color:#222;
+	font-family:Microsoft YaHei,Helvitica,Verdana,Tohoma,Arial,san-serif;
+	margin:0;
+	padding: 0;
+	text-decoration: none;
+}
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, input, textarea, p, blockquote, th, td {
+	margin:0;
+	padding:0;
+}
+img {
+	border:0;
+}
+ol, ul {
+	list-style: none outside none;
+	margin:0;
+	padding: 0;
+}
+a {
+	color:#000000;
+	text-decoration: none;
+}
+.clr {
+	display:block;
+	clear:both;
+	height:0;
+	overflow:hidden;
+}
+.copyright{padding:8px;text-align:center;font-size:14px;color:#666;}
+.copyright a{color:#666;}
+/*cate6*/
+#cate6{
+	background-color:#FBF5E0;
+	display: block;margin: 1%;overflow-x: hidden;
+}
+#cate6 .mainmenu {
+    display: block;
+    margin: 0 auto;
+    padding: 0;
+}
+#cate6 .mainmenu li {
+	float:left;
+	display: block;
+}
+
+
+#cate6 .mainmenu li.li0:nth-child(32n+1) .menumesg{
+	float:left;display: block; background-color:#0072BC;
+}
+
+#cate6 .mainmenu li.li0:nth-child(32n+5) .menumesg{
+	float:right;display: block;background-color:#F98F2E;
+}
+#cate6 .mainmenu li.li0:nth-child(32n+5) .menuimg{
+	margin:0;float:left;
+}
+#cate6 .mainmenu li.li0:nth-child(32n+9) .menumesg{
+	float:left;display: block;background-color:#01A31C;
+}
+
+#cate6 .mainmenu li.li0:nth-child(32n+13) .menumesg{
+	float:right;display: block;background-color:#FFC40D;
+}
+#cate6 .mainmenu li.li0:nth-child(32n+13) .menuimg{
+	margin:0;float:left;
+}
+#cate6 .mainmenu li.li0:nth-child(32n+17) .menumesg{
+	float:left;display: block; background-color:#69C9D2;
+}
+#cate6 .mainmenu li.li0:nth-child(32n+21) .menumesg{
+	float:right;display: block; background-color:#92ABF8;
+}
+#cate6 .mainmenu li.li0:nth-child(32n+21) .menuimg{
+	margin:0;float:left;
+}
+#cate6 .mainmenu li.li0:nth-child(32n+25) .menumesg{
+	float:left;display: block; background-color:#FF9999;
+}
+#cate6 .mainmenu li.li0:nth-child(32n+29) .menumesg{
+	float:right;display: block; background-color:#F892DB;
+}
+#cate6 .mainmenu li.li0:nth-child(32n+29) .menuimg{
+	margin:0;float:left;
+}
+
+
+
+
+#cate6 .mainmenu li.li1 .menubtn, #cate6 .mainmenu li.li2 .menubtn, #cate6 .mainmenu li.li3 .menubtn {
+	overflow:hidden;
+}
+#cate6 .mainmenu li .menuimg{
+	display:none; width:69.2%; height:111px; overflow:hidden; 
+}
+#cate6 .mainmenu li .menutext {
+	display:none;
+}
+#cate6 .mainmenu li.li0 {
+	 width: 100%;
+	 margin-top: 1%;
+}
+#cate6 .mainmenu li.li0 .menubtn {
+	color: #FFFFFF;
+	display:block;
+	
+	
+}
+#cate6 .mainmenu li.li0 .menutitle {
+	font-size: 24px;
+    line-height: 24px;
+    padding:10px 0;
+	width: 55%;
+	margin-left:10px;
+     
+}
+.menutitle {
+color:#fff;
+}
+#cate6 .mainmenu li.li0 .menuimg{
+	display: block;  position:relative; box-shadow:0 0px 3px 0 rgba(0, 0, 0, 0.15);
+	-moz-box-shadow:0 0px 3px 0 rgba(0, 0, 0, 0.15);
+	-webkit-box-shadow:0 0px 3px 0 rgba(0, 0, 0, 0.15); float:right;
+}
+#cate6 .mainmenu li.li0 .menumesg{
+	display: block; position:relative;height:111px; width:30%;float: left;
+	background-color:#999;box-shadow:0 0px 3px 0 rgba(0, 0, 0, 0.15);
+	-moz-box-shadow:0 0px 3px 0 rgba(0, 0, 0, 0.15);
+	-webkit-box-shadow:0 0px 3px 0 rgba(0, 0, 0, 0.15);
+}
+#cate6 .mainmenu li.li0  .menuico {
+    display: block;
+    background: url("../images/toright.png") no-repeat scroll 0 0 transparent;
+	background-size:22px auto;
+    bottom: 8px;
+    content: " ";
+    height: 22px;
+    position: absolute;
+    right: 8px;
+    width: 22px;
+	text-indent:-999px;
+	overflow:hidden;
+    z-index: 1;
+}
+#cate6 .mainmenu li.li0  .menutext {
+    display: block;
+    font-size: 16px;
+	background-color: rgba(0, 0, 0, 0.5);
+    bottom: 0;
+    color: #FFFFFF;
+    /*height: 25px;*/
+    left: 0;
+    line-height: 25px;
+    position: absolute;
+    text-align: center;
+    width: 100%;
+	/*padding:0 10px;*/
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	text-align:center;
+}
+
+#cate6 .mainmenu li.li1{
+	background-color: #ffffff;
+    text-align: center;
+    margin: 1% 0 0 0;
+    width: 30%;
+	box-shadow:0 0px 3px 0 rgba(0, 0, 0, 0.15);
+	-moz-box-shadow:0 0px 3px 0 rgba(0, 0, 0, 0.15);
+	-webkit-box-shadow:0 0px 3px 0 rgba(0, 0, 0, 0.15);
+}
+#cate6 .mainmenu li.li1 .menubtn {
+	color: #333333;
+    display: block;
+    font-size: 16px;
+    height: 48px;
+    line-height: 48px;
+}
+#cate6 .mainmenu li.li2{
+	background-color: #ffffff;
+    text-align: center;
+    margin: 1% 0 0 1.2%;
+    width: 38%;
+	box-shadow:0 0px 3px 0 rgba(0, 0, 0, 0.15);
+	-moz-box-shadow:0 0px 3px 0 rgba(0, 0, 0, 0.15);
+	-webkit-box-shadow:0 0px 3px 0 rgba(0, 0, 0, 0.15);
+}
+
+#cate6 .mainmenu li.li2 .menubtn {
+	color: #333333;
+    display: block;
+    font-size: 16px;
+    height: 48px;
+    line-height: 48px;
+}
+
+#cate6 .mainmenu li.li3{
+	background-color: #ffffff;
+    text-align: center;
+    margin: 1% 0 0 0;
+    width: 30%;
+	box-shadow:0 0px 3px 0 rgba(0, 0, 0, 0.15);
+	-moz-box-shadow:0 0px 3px 0 rgba(0, 0, 0, 0.15);
+	-webkit-box-shadow:0 0px 3px 0 rgba(0, 0, 0, 0.15);
+	float:right;
+}
+#cate6 .mainmenu li.li3 .menubtn {
+	color: #333333;
+    display: block;
+    font-size: 16px;
+    height: 48px;
+    line-height: 48px;
+}
+
+
+#cate6 .menubtn .menumesg {
+	padding:0px;
+}
+
+#cate6 .mainmenu li div img {
+	border:0; width:100%
+}
+
+/*  ¿Ó∆” add 2014-6-14 add **/
+.item {
+margin-top: 4px;
+}
+
+.news_list {
+height: 34px;
+line-height: 34px;
+background: url(../images/tub.png) 98% -40px no-repeat #292a2b;
+overflow: hidden;
+}
+.news_list a {
+width: 88%;
+height: 34px;
+display: block;
+padding: 0 8% 0 4%;
+font-size: 16px;
+color: #fff;
+}

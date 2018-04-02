@@ -1,0 +1,218 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="cache-control" content="no-cache">
+<meta http-equiv="pragram" content="no-cache">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" name="viewport">
+    
+<meta name="keywords" content=""/>
+<meta name="description" content=""/>
+
+<title>{$config.sitename}</title>
+    
+
+ <script src="/scripts/jquery/jquery-1.10.2.min.js" type="text/javascript"></script>
+ <script src="/templatesstore/js/swipe_1.js" type="text/javascript"></script>
+<script src="/templatesstore/js/jquery.fancybox.pack.js"></script>
+<script src="/templatesstore/js/common_fun.js"></script>
+<script src="/templatesstore/js/common_mobile.js"></script>
+<link rel="stylesheet" href="/templatesstore/css/mobile-style.css" type="text/css">
+     <style type="text/css">
+        header h1 {
+
+background: #079503 url({$config.bgpic}) no-repeat left top;
+}
+
+    </style>
+</head>
+<body>
+<header>
+	<a href="/index.aspx?wid={$wid}&openid={$openid}"><h1>{$model.title}</h1></a>
+	<div class="menu">
+		<span class="iconMenu">菜单</span>
+	</div>
+</header>
+<div id="wrap">
+        
+<div class="conter"><section class="contentList"><h2>{$model.title}</h2><hr/><div class="mContentBox">
+<p>&nbsp;</p>
+<p> {$model.content}</p>
+
+
+            <p>&nbsp;</p>
+</div></section></div>
+    <script language="javascript">
+        function savevisitor() {
+            var title = "";
+            var firstname = "";
+            var lastname = "";
+            var jobtitle = "";
+            var department = "";
+            var company = "";
+            var address = "";
+            var country = "";
+            var province = "";
+            var city = "";
+            var zipcode = "";
+            var telephone = "";
+            var fax = "";
+            var mobile = "";
+            var email = "";
+            var website = "";
+
+            if ($("input[type='radio'][name='ddlTitle']:checked").length == 0) {
+                alert("请选择您的称谓");
+                return false;
+            }
+            title = $("input[type='radio'][name='ddlTitle']:checked").val();
+
+            firstname = $.trim($("#firstname").val());
+            if (firstname == '') {
+                alert("请输入您的姓");
+                return false;
+            }
+            lastname = $.trim($("#lastname").val());
+            if (lastname == '') {
+                alert("请输入您的名");
+                return false;
+            }
+            jobtitle = $.trim($("#jobtitle").val());
+            if (jobtitle == '') {
+                alert("请输入您的职位");
+                return false;
+            }
+            department = $.trim($("#department").val());
+            company = $.trim($("#company").val());
+            if (company == '') {
+                alert("请输入您的公司名称");
+                return false;
+            }
+            address = $.trim($("#address").val());
+            if (address == '') {
+                alert("请输入您的通信地址");
+                return false;
+            }
+            country = $.trim($("#country").val());
+            if (country == '') {
+                alert("请选择您的国家");
+                return false;
+            }
+            province = $.trim($("#province").val());
+            if (province == '') {
+                alert("请输入您的省份");
+                return false;
+            }
+            city = $.trim($("#city").val());
+            if (city == '') {
+                alert("请输入您的城市");
+                return false;
+            }
+            zipcode = $.trim($("#zipcode").val());
+            telephone = $.trim($("#telephone").val());
+            fax = $.trim($("#fax").val());
+            mobile = $.trim($("#mobile").val());
+            if (mobile == '') {
+                alert("请输入您的手机");
+                return false;
+            }
+            email = $.trim($("#email").val());
+            if (email == '' || !isValidEmailAddress(email)) {
+                alert("请输入您的电子邮件");
+                return false;
+            }
+            website = $.trim($("#website").val());
+
+            var data = {
+                title: title,
+                firstname: firstname,
+                lastname: lastname,
+                jobtitle: jobtitle,
+                department: department,
+                company: company,
+                address: address,
+                country: country,
+                province: province,
+                city: city,
+                zipcode: zipcode,
+                telephone: telephone,
+                fax: fax,
+                mobile: mobile,
+                email: email,
+                website: website
+            };
+            $.post("/processregister.aspx", data, function (result) {
+                var jresult = $.parseJSON(result);
+                if (jresult.ErrorCode == 0) {
+                    document.location.href = "register_ok.aspx";
+                } else {
+                    alert(jresult.ErrorMessage);
+                }
+            });
+            return true;
+        }
+
+        function isValidEmailAddress(emailAddress) {
+            var pattern = new RegExp(/^((([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+(\.([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+)*)|((\x22)((((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(([\x01-\x08\x0b\x0c\x0e-\x1f\x7f]|\x21|[\x23-\x5b]|[\x5d-\x7e]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(\\([\x01-\x09\x0b\x0c\x0d-\x7f]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]))))*(((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(\x22)))@((([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.)+(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.?$/i);
+            return pattern.test(emailAddress);
+        }
+
+
+    </script>
+
+</div>	
+<footer>&copy; {$config.wcopyright}</footer>
+     <div style="display: none">©沐雪提供</div>
+
+
+<div class="extra" id="options">
+	<table>
+		<vt:function var="category" method="getCategory" type="$this" classlayer="1"/>
+                <vt:foreach from="$category" item="#.data" index="i" groupsize="3">
+             
+                    <tr>
+                        
+                         <vt:foreach from="$#.data" item="#.item" index="#.j"> 
+                             <td>
+                                 <a href="{$item.link_url}" class="tabIcon ">
+                    
+                               <img src="{$item.ico_url}" />
+                                 <span>{$item.title}</span>
+                   
+                                  </a>
+
+                             </td>
+
+
+                        </vt:foreach>
+                       </tr>
+                   
+               </vt:foreach>
+	</table>
+    <div class="closeextra"><a href="javascript:void(0);" id="lnkcloseextra" ></a></div>
+</div>
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        var closed = true;
+        $(".iconMenu").click(function (e) {
+            if (closed) {
+                $("#options").slideDown(500);
+                closed = false;
+            }
+            else {
+                $("#options").slideUp(500);
+                closed = true;
+            }
+        });
+        $("#lnkcloseextra").click(function (e) {
+            $("#options").slideUp(500);
+            closed = true;
+        });
+    });
+
+</script>
+
+</body>
+</html>

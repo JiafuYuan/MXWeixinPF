@@ -1,0 +1,287 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="author" content="m.ehaier.com">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" name="viewport" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+    <meta content="telephone=no" name="format-detection" />
+    <meta content="false" id="twcClient" name="twcClient" />
+    <link type="text/css" rel="stylesheet" href="/shop/templates/haier/css/style_1.css">
+    <link rel="apple-touch-icon-precomposed" href="{$shopconfig.logo}" />
+    <link rel="shortcut icon" type="image/x-icon" href="{$shopconfig.logo}" />
+    <script type="text/javascript" src="/shop/templates/haier/js/zepto.js"></script>
+     
+    <script type="text/javascript" src="/shop/templates/haier/js/mediav.js"></script>
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <title>{$model.productName}</title>
+    <link type="text/css" rel="stylesheet" href="/shop/templates/haier/css/Details.css" />
+    <link rel="stylesheet" type="text/css" href="/shop/templates/haier/css/swiper.css" />
+    <script type="text/javascript" src="/shop/templates/haier/js/pz.js"></script>
+    <script src="/shop/templates/haier/js/jquery-2.0.2.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            //统计购物车数量
+            $.getJSON("/shop/shopmgr.ashx?wid={$wid}&openid={$openid}&myact=pcount", function (d, status) {
+                $("#count").text(d.data);
+
+            });
+        });
+
+    </script>
+</head>
+<body>
+    <header class="header">
+        <span class="fh left"><a href="javascript:history.go(-1);">&nbsp;</a></span>
+        商品详情
+      	<span class="hd_right right">
+              <a class="gwc" href="{$carturl}"><span id="count"></span>&nbsp;</a>
+              <a class="right_but" href="/shop/navigate.aspx?wid={$wid}&openid={$openid}">&nbsp;</a>
+          </span>
+    </header>
+    <div id="page">
+        <!--======main=====-->
+        <div class="main">
+            <div class="m_banner">
+                <div class="swiper-container">
+                    <div class="pagination"></div>
+                    <div class="swiper-wrapper">
+                        <vt:foreach from="$model.albums" item="albums" index="#.floor">
+                      <div class="swiper-slide"><a href="javascript:void(0);"><img src="{$albums.original_path}" /></a></div>
+                        </vt:foreach>
+                    </div>
+            </div>
+        </div>
+        <div class="details_text">
+            <div class="details_title">{$model.productName} {$model.sku}</div>
+            <div class="details_nr">{$model.shortDesc}</div>
+            <div class="details_jg">商城价格：<span name="{$model.salePrice}">￥{$model.salePrice}</span> </div>
+            <a class="activemsg" href=""></a>
+            
+               <div class="details_nr">
+                购买数量：<span class="count_num">
+                    <a href="javascript:void(0)" id="btnMinus" class="inputcheckbox">-</a>
+                    <div class="count-input">
+                        <input type="text" maxlength="2" value="1" id="proCount" readonly="readonly">
+                    </div>
+                    <a href="javascript:void(0)" id="btnAdd" class="inputcheckbox">+</a>
+                </span>
+                <span class="count-msg" id="stockStatus"></span>
+            </div>
+        </div>
+        <div class="details_kf">
+          
+            <!-- <a href="javascript:void(0);" id="collect"><span class="micon icon-fav"></span><span id="collectContent">收藏</span></a> -->
+            <a href="javascript:void(0);" class="lxkf"><span class="micon icon-contact"></span>联系客服</a>
+            <!--&nbsp;&nbsp;&nbsp;&nbsp;分享到:<a href="javascript:void(0);"><span class="micon icon-sina"></span>新浪微博</a><a href="javascript:void(0);"><span class="micon icon-weixin"></span>微信</a> -->
+        </div>
+        <div class="details_xx">
+            <ul>
+                <li class="lb1"><a href="/shop/detail_list.aspx?wid={$wid}&pid={$model.id}&openid={$openid}&type=1">详细介绍</a><span class="micon icon-right-gray"></span></li>
+                <li><a href="/shop/detail_list.aspx?wid={$wid}&pid={$model.id}&openid={$openid}&type=2">规格参数</a><span class="micon icon-right-gray"></span></li>
+             </ul>
+        </div>
+        <div class="details_but" style="display: none" id="you">
+            <a href="javascript:void(0);" id="buyImmediately">立即购买</a>
+            <!--订金尾款、限时抢购、二维码、套装走快捷购物流程-->
+            <a href="javascript:void(0);" class="gwc" id="addCart">加入购物车</a>
+        </div>
+        
+
+    <!--_share_js-->
+    <vt:template id="_bottom" file="_bottom.html" charset="utf-8" />
+    <!--/_share_js-->
+ 
+
+
+    <!--联系客服-->
+    <div class="tc2" style="display: none;">
+        <div class="kf_top">
+           <a href="tel:{$shopconfig.tel}"><p class="dh">{$shopconfig.tel}</p></a>
+            <p class="tc_cg"></p>
+        </div>
+        <div class="tc_button">
+            <ul>
+                <li><a href="tel:{$shopconfig.tel}">拨打咨询</a></li>
+                <li><a href="javascript:void(0)" class="lxkf_close">取消</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+
+        //联系客服打开
+        $(".lxkf").click(function () {
+            if ($('#load_mask').length) { }
+            else {
+                var h = $(document.body).height() + "px";
+                $("<div id='load_mask' class='tc_zz' style='height:" + h + "' />").appendTo("body");
+            }
+            $("#load_mask").show();
+            var t = $(window).scrollTop(), h = $(window).height(), iTop = 0;
+            iTop = ((h - $(".tc2").height()) / 2 + t) + "px";
+            $(".tc2").css("top", iTop).show();
+
+        })
+        //联系客服关闭
+        $(".lxkf_close").click(function () {
+            $(".tc2").hide();
+            $("#load_mask").hide();
+        })
+    </script>
+    </div>
+  
+  <!--zepto and extend-->
+    <script type="text/javascript" src="/shop/templates/haier/js/touch.js"></script>
+    <script type="text/javascript" src="/shop/templates/haier/js/selector.js"></script>
+    <script type="text/javascript" src="/shop/templates/haier/js/swiper-2.4.js"></script>
+    <script type="text/javascript" src="/shop/templates/haier/js/util.js"></script>
+        <script src="../../../scripts/jquery/jquery.query.js"></script>
+       <script type="text/javascript">
+           $(document).ready(function (e) {
+             
+             
+           
+
+            
+
+            //购买数量增加或减少
+            var doEvent = document.hasOwnProperty("ontouchstart") ? "tap" : "click";
+            //减少
+            $("#btnMinus").on(doEvent, function () {
+                var count = parseInt($("#proCount").val());
+                if (count > 1) {
+                    $("#proCount").val(--count);
+                }
+            });
+
+            //增加，最多99个
+            $("#btnAdd").on(doEvent, function () {
+               
+                var count = parseInt($("#proCount").val());
+                if (count < 100) {
+                    $("#proCount").val(++count);
+                }
+            });
+
+         
+
+        
+
+            //手机号校验
+            function isMobileNO(mobileNum) {
+                var pattern = new RegExp("^((13[0-9])|(14[57])|(15[^4,\\D])|(18[0-9]))\\d{8}$");
+                if (!pattern.test(mobileNum)) {
+                    alert("手机号不正确！");
+                    return false;
+                }
+                return true;
+            }
+
+            //邮箱校验
+            function isEamll(emall) {
+                var pattern = new RegExp("^([a-zA-Z0-9]*[-_]?[a-zA-Z0-9]+)*@([a-zA-Z0-9]*[-_]?[a-zA-Z0-9]+)+[\\.][A-Za-z]{2,3}([\\.][A-Za-z]{2})?$");
+                if (!pattern.test(emall)) {
+                    alert("邮箱不正确！");
+                    return false;
+                }
+                return true;
+            }
+
+        });
+
+    </script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+          
+            //获取URL参数
+            var id = $.query.get("pid");
+           checkStock(id)
+          
+            //库存校验
+           function checkStock(regionId) {
+               $.getJSON("/shop/shop.ashx?wid={$wid}&id=" + id + "&myact=checkid", function (d, status) {
+             
+             if (typeof (d.data) == "undefined") {
+                 location.href = "{$indexurl}";
+             }
+            else  if (d.data > 0) {
+                 hasStock();
+                 $("#you").css('display', 'block');
+              
+            } else if (d.data<=0) {
+                 noStock();
+                 $("#you").hide();
+               
+          }
+                    
+                });
+            }
+
+            //有货
+            function hasStock() {
+                $("#stockStatus").text("");
+            }
+            //无货
+            function noStock() {
+                $("#stockStatus").text("无货");
+            }
+
+           
+            //加入购物车
+            $("#addCart").click(function () {
+                var bc = $("#proCount").val();
+                var productid = id;
+                var jiage = $(".details_jg span").attr('name');
+                 $.getJSON("/shop/shopmgr.ashx?wid={$wid}&productid=" + productid + "&bc=" + bc + "&openid={$openid}&mid=0&attr=" + "" + "&totprice=" +jiage+ "&myact=addCart", function (d, status) {
+                     
+                    if (d.errCode) {
+                            location.href = "{$carturl}";
+                        } else {
+                            alert("购物车添加失败");
+                        }
+                  });
+
+              
+                  
+             
+            });
+
+            //立即购买
+            $("#buyImmediately").click(function () {
+                var bc = $("#proCount").val();
+                var productid = id;
+                var jiage = $(".details_jg span").attr('name');
+                $.getJSON("/shop/shopmgr.ashx?wid={$wid}&productid=" + productid + "&bc=" + bc + "&openid={$openid}&mid=0&attr=" + "" + "&totprice=" + jiage + "&myact=addCart", function (d, status) {
+
+                    if (d.errCode) {
+                        location.href = "/shop/confirmOrder.aspx?wid={$wid}&openid={$openid}";
+                    } 
+                });
+            });
+
+
+
+
+
+            //商品图片展示 
+            var gallery = $('.swiper-container').swiper({
+                slidesPerView: 'auto',
+                centeredSlides: true,
+                pagination: '.pagination',
+                paginationClickable: true,
+                /*resizeReInit: true,*/
+                keyboardControl: true,
+                grabCursor: true,
+                /*loop: true,*/ //slidesPerView为auto时不支持loop模式
+                autoplay: 4000//自动播放的开关及延时
+            });
+        });
+
+      
+    </script>
+</body>
+</html>

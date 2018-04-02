@@ -1,0 +1,94 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+	<meta name="author" content="m.ehaier.com">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" name="viewport"  />
+	<meta name="format-detection" content="telephone=no" />
+	<meta content="yes" name="apple-mobile-web-app-capable" />
+	<meta content="black" name="apple-mobile-web-app-status-bar-style" />
+	<meta content="telephone=no" name="format-detection" />
+	<meta content="false" id="twcClient" name="twcClient" />
+	<link type="text/css" rel="stylesheet" href="/shop/templates/haier/css/style_1.css">
+	<link rel="apple-touch-icon-precomposed" href="{$shopconfig.logo}"/>	
+	<link rel="shortcut icon" type="image/x-icon" href="{$shopconfig.logo}"/>  
+	<script type="text/javascript" src="/shop/templates/haier/js/zepto.js"></script>
+	<script type="text/javascript" src="/shop/templates/haier/js/gs.js"></script>
+	<script type="text/javascript" src="/shop/templates/haier/js/mediav.js"></script>
+	<title>{$model.productName}</title>
+<link type="text/css" rel="stylesheet" href="/shop/templates/haier/css/style.css">
+<link type="text/css" rel="stylesheet" href="/shop/templates/haier/css/member.css">
+    <script type="text/javascript">
+        $(function () {
+            //统计购物车数量
+            $.getJSON("/shop/shopmgr.ashx?wid={$wid}&openid={$openid}&myact=pcount", function (d, status) {
+                $("#count").text(d.data);
+
+            });
+        });
+
+    </script>
+</head>
+<body>
+	<header class="header">
+	 	<span class="hd_right right">
+	          <a class="gwc" href="{$carturl}"><span id="count"></span>&nbsp;</a>
+              <a class="right_but" href="/shop/navigate.aspx?wid={$wid}&openid={$openid}">&nbsp;</a></span>
+	</header>
+    <section class="mainLayout">
+		<div class="main">
+            <div class="Login order_tj">
+            	<p class="order_success"><b class="micon success_tjbutton"></b>订单提交成功</p>
+                <p>感谢您在本商城购物，订单已提交成功。</p>
+                <p>订单编号：{$order.order_no}</p>
+                <p>应付金额：<span>￥{$order.order_amount}</span></p>
+        		            </div>
+        </div>
+        <script type="text/javascript" src="/js/v2/monitoring/cig.js"></script>
+		<script type="text/javascript" src="/js/v2/monitoring/pz.js"></script>
+		
+         
+    </section>
+    <!--_share_js-->
+       <vt:template id="_bottom" file="_bottom.html" charset="utf-8" />
+    <!--/_share_js-->
+ 
+
+
+<!--联系客服-->
+<div class="tc2" style="display:none;">
+	<div class="kf_top">
+		<p class="dh"></p>
+		<p class="tc_cg">早8:00 - 晚20:00</p>
+	</div>
+	<div class="tc_button">
+		<ul>
+			<li><a href="tel:">拨打咨询</a></li>
+			<li><a href="javascript:void(0)" class="lxkf_close">取消</a></li>
+		</ul>
+	</div>
+</div>
+
+<script type="text/javascript">
+
+    //联系客服打开
+    $(".lxkf").click(function () {
+        if ($('#load_mask').length) { }
+        else {
+            var h = $(document.body).height() + "px";
+            $("<div id='load_mask' class='tc_zz' style='height:" + h + "' />").appendTo("body");
+        }
+        $("#load_mask").show();
+        var t = $(window).scrollTop(), h = $(window).height(), iTop = 0;
+        iTop = ((h - $(".tc2").height()) / 2 + t) + "px";
+        $(".tc2").css("top", iTop).show();
+
+    })
+    //联系客服关闭
+    $(".lxkf_close").click(function () {
+        $(".tc2").hide();
+        $("#load_mask").hide();
+    })
+</script></body>
+</html>
+

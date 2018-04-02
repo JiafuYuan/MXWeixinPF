@@ -1,0 +1,185 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+	<meta name="author" content="m.ehaier.com">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" name="viewport"  />
+	<meta name="format-detection" content="telephone=no" />
+	<meta content="yes" name="apple-mobile-web-app-capable" />
+	<meta content="black" name="apple-mobile-web-app-status-bar-style" />
+	<meta content="telephone=no" name="format-detection" />
+	<meta content="false" id="twcClient" name="twcClient" />
+	<link type="text/css" rel="stylesheet" href="/shop/templates/haier/css/style_1.css">
+	<link rel="apple-touch-icon-precomposed" href="{$shopconfig.logo}"/>	
+	<link rel="shortcut icon" type="image/x-icon" href="{$shopconfig.logo}"/>  
+	<script type="text/javascript" src="/shop/templates/haier/js/zepto.js"></script>
+	<!--<script type="text/javascript" src="/shop/templates/haier/js/gs.js"></script>-->
+	<script type="text/javascript" src="/shop/templates/haier/js/mediav.js"></script>
+	<link type="text/css" rel="stylesheet" href="/shop/templates/haier/css/member.css">
+<script type="text/javascript" src="/shop/templates/haier/js/touch.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            //统计购物车数量
+            $.getJSON("/shop/shopmgr.ashx?wid={$wid}&openid={$openid}&myact=pcount", function (d, status) {
+                $("#count").text(d.data);
+                if (d.data <= 0) {
+                    $("#by").hide();
+                    $("#buy").hide();
+                } else {
+                   
+                    $("#by").show();
+                    $("#buy").show();
+                    $("#bu").hide();
+                }
+
+            });
+        });
+
+    </script>
+</head><body id="page">
+<header class="header">
+  <span class="fh left"><a href="{$indexurl}">&nbsp;</a></span>
+  购物车
+  <span class="hd_right right">
+		<a class="gwc" href="{$carturl}"><span id="count"></span>&nbsp;</a>
+		<a class="right_but" href="/shop/navigate.aspx?wid={$wid}&openid={$openid}">&nbsp;</a>
+</span>
+ </header>
+    <div class="Login buy_null" id="bu">
+		<div class="buy_car"><img src="/shop/templates/haier/images/buycar_icon.png" style="width:50%;" /></div>
+		<p>购物车还是空的，现在开始行动吧！</p>
+		<a href="{$indexurl}" class="address_addbutton">去首页看看</a>
+	</div>
+
+ <vt:foreach from="$cartlist" item="cproduct" index="i"  >
+
+<div class="list_msg list_with_img" style="margin-top:10px;" id="by">
+
+  <a href="{$cproduct.productUrl}"><img src="{$cproduct.productPic}"></a>
+  <ul>
+  <li>{$cproduct.productName}[{$cproduct.skuInfo}]</li>
+  <li>购买价格：<span class="txt_red">￥{$cproduct.avgPrice}元</span></li>
+  <li>购买数量：
+	  <span class="count_num"  id="{$cproduct.id}">
+		<a href="javascript:;"  name="count-min" class="inputcheckbox">-</a>
+		 <div class="count-input">
+          <input type="text" maxlength="2" value="{$cproduct.productNum}" id="proCount{$cproduct.id}"  readonly />
+        </div>
+		<a href="javascript:;" name="count-add" class="inputcheckbox">+</a>
+	</span>
+		<a name="remove" href="javascript:;" pid="{$cproduct.id}" class="m-btn btn-red" style="height:26px; line-height:26px; font-size:14px;">删除</a>
+	</li>
+</ul>
+</div>
+     </vt:foreach>
+<div class="buy_js address_button" id="buy">
+  <p>订单总计：<span id="finalPrice">{$alltot}</span></p>
+  <a id="settlement" href="/shop/confirmOrder.aspx?wid={$wid}&openid={$openid}" class="submit">去结算</a> </div>
+   <!--_share_js-->
+    <vt:template id="_bottom" file="_bottom.html" charset="utf-8" />
+    <!--/_share_js-->
+
+ 
+
+<!--联系客服-->
+<div class="tc2" style="display:none;">
+	<div class="kf_top">
+		<p class="dh">4008-281-919</p>
+		<p class="tc_cg">早8:00 - 晚20:00</p>
+	</div>
+	<div class="tc_button">
+		<ul>
+			<li><a href="tel:4008-281-919">拨打咨询</a></li>
+			<li><a href="javascript:void(0)" class="lxkf_close">取消</a></li>
+		</ul>
+	</div>
+</div>
+
+<script type="text/javascript">
+
+    //联系客服打开
+    $(".lxkf").click(function () {
+        if ($('#load_mask').length) { }
+        else {
+            var h = $(document.body).height() + "px";
+            $("<div id='load_mask' class='tc_zz' style='height:" + h + "' />").appendTo("body");
+        }
+        $("#load_mask").show();
+        var t = $(window).scrollTop(), h = $(window).height(), iTop = 0;
+        iTop = ((h - $(".tc2").height()) / 2 + t) + "px";
+        $(".tc2").css("top", iTop).show();
+
+    })
+    //联系客服关闭
+    $(".lxkf_close").click(function () {
+        $(".tc2").hide();
+        $("#load_mask").hide();
+    })
+</script><script type="text/javascript" src="/shop/templates/haier/js/util.js"></script>
+<script type="text/javascript">
+    
+    $(function ($) {
+        $("a[name='remove']").click(function () {
+            var productId = $(this).attr("pid");
+            ($).get("/shop/shopmgr.ashx?myact=remove", { "id": productId }, function (d) {
+                     if (d.errCode == false) {
+                    location.href = "{$carturl}";
+                }
+                 if (typeof (d.errCode) == "undefined") {
+                 location.href = "{$carturl}";
+                 }
+            });
+        });
+
+        $("a[name='count-add']").click(function () {
+            var $productId = $(this).parent();
+            var id = $productId.attr('id');
+            var $input = $("#proCount" + id);
+            var valu = $input.attr('value');
+            var a = ++valu;
+            $.ajax({
+                type: 'POST',
+                url: '/shop/shopmgr.ashx?myact=modifyNum',
+                data: { ic: id, bc: a },
+                success: function (data) {
+                    $("#finalPrice").text(data.data);
+                    $input.attr("value", a);
+                    window.location.href = "{$carturl}";
+                },
+                error: function (data) {
+                    alert("操作失败，请刷新页面后重新尝试");
+                },
+                dataType: 'json'
+            });
+        });
+
+        $("a[name='count-min']").click(function () {
+            var $productId = $(this).parent();
+            var id = $productId.attr('id');
+            var $input = $("#proCount" + id);
+            var valu = $input.attr('value');
+            var a = --valu;
+            if (a > 0) {
+                $.ajax({
+                    type: 'POST',
+                    url: '/shop/shopmgr.ashx?myact=modifyNum',
+                    data: { ic: id, bc: a },
+                    success: function (data) {
+                        $("#finalPrice").text(data.data);
+                        $input.attr("value", a);
+                        window.location.href = "{$carturl}";
+                    },
+                    error: function (data) {
+                        alert("操作失败，请刷新页面后重新尝试");
+                    },
+                    dataType: 'json'
+                });
+            } else {
+                $input.attr("value", 1);
+                alert("购买数量不能小于1");
+            }
+        });
+    });
+    </script>
+</body>
+</html>

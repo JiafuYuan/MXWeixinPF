@@ -1,0 +1,28 @@
+html, body { color: #222; font-family: Microsoft YaHei, Helvitica, Verdana, Tohoma, Arial, san-serif; margin: 0; padding: 0; text-decoration: none; }
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, input, textarea, p, blockquote, th, td { margin: 0; padding: 0; }
+img { border: 0; }
+ol, ul { list-style: none outside none; margin: 0; padding: 0; }
+a { color: #000000; text-decoration: none; }
+.clr { display: block; clear: both; height: 0; overflow: hidden; }
+.copyright { padding: 8px; text-align: center; font-size: 14px; color: #666; }
+.copyright a { color: #666; }
+/*cate105*/
+#cate105 { background-color: #eaebeb; overflow-x: hidden; margin: 0 auto; }
+#cate105 .banner img { width: 100%; }
+#cate105 .imgmenu { margin: 0; }
+#cate105 .imgmenu ul { display: -webkit-box; height: 90px; background: -webkit-gradient(linear, 0 0, 0 100%, from(#ffffff), to(#f1f0ef) ); border-bottom: 1px solid #ccc; }
+#cate105 .imgmenu li { -webkit-box-flex: 1; -moz-box-flex: 1; }
+#cate105 .imgmenu li:not(:last-of-type) { background: -webkit-gradient(linear, 0 0, 0 100%, from(transparent), to(transparent), color-stop(.5, #d4cec1)) no-repeat right center; -webkit-background-size: 1px 90%; }
+#cate105 .imgmenu li a { display: block; text-align: center; }
+#cate105 .imgmenu li a img { width: 45px; margin: 12px 10px 5px 10px;border-radius: 100%;}
+#cate105 .imgmenu li a p { font-size: 14px }
+#cate105 .catemenu { margin: 10px; border: 1px solid #ccc; border-radius: 5px; background: #fff; min-height: 50px; padding: 5px; -webkit-box-sizing: border-box; }
+#cate105 .catemenu > *:last-child { width: 100%; }
+#cate105 .catemenu ul { display: block; margin-bottom: 5px; }
+#cate105 .catemenu li dd { display: inline-block; width: 33.3%; float: left; }
+#cate105 .catemenu li dl dd a { display: block; line-height: 25px; border: 1px solid #ccc; width: 50px; margin: 5px auto 0; border-radius: 3px; text-align: center; color: #75674a; font-size: 14px; background: -webkit-gradient(linear, 0 0, 0 100%, from(#ffffff), to(#f1f1f0) ); }
+.cname { display: table-cell; vertical-align: top; height: 100px; overflow: hidden; padding-right: 3px; }
+.cname a { display: block; overflow: hidden; border-radius: 3px; position: relative; }
+.cname img { width: 100px; vertical-align: top; border: 0; border-radius: 3px; }
+.cname2 { display: table-cell; vertical-align: top; height: 100px; overflow: hidden; padding-right: 3px; }
+#cate105 .catemenu li dl dt label { text-align: left; overflow: hidden; display: block; width: 95%; height: 30px; margin: 5px auto; line-height: 20px; font-size: 16px; color: #fff; text-indent: 5px; border: 1px solid red; border-width: 4px 4px 4px 20px; -webkit-box-sizing: border-box; -webkit-border-image: url(../images/v46_3.png) 4 5 4 53; }

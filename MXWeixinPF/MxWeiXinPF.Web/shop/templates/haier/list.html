@@ -1,0 +1,290 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="author" content="m.ehaier.com">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" name="viewport" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+    <meta content="telephone=no" name="format-detection" />
+    <meta content="false" id="twcClient" name="twcClient" />
+    <link type="text/css" rel="stylesheet" href="/shop/templates/haier/css/style_1.css">
+    <link href="/shop/templates/default/css/templates.css" rel="stylesheet" />
+    <link rel="apple-touch-icon-precomposed" href="{$shopconfig.logo}" />
+    <link rel="shortcut icon" type="image/x-icon" href="{$shopconfig.logo}" />
+    <script type="text/javascript" src="/shop/templates/haier/js/zepto.js"></script>
+    <script type="text/javascript" src="/shop/templates/haier/js/gs.js"></script>
+    <script type="text/javascript" src="/shop/templates/haier/js/mediav.js"></script>
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <title>{$category.title}</title>
+    <link type="text/css" rel="stylesheet" href="/shop/templates/haier/css/list.css">
+    <link rel="stylesheet" type="text/css" href="/shop/templates/haier/css/panel.css" />
+    <link rel="stylesheet" type="text/css" href="/shop/templates/haier/css/panel.default.css" />
+    <link type="text/css" rel="stylesheet" href="/shop/templates/haier/css/member.css">
+    <script type="text/javascript" src="/shop/templates/haier/js/touch.js"></script>
+    <script type="text/javascript" src="/shop/templates/haier/js/throttle.js"></script>
+    <script type="text/javascript" src="/shop/templates/haier/js/event.scrollStop.js"></script>
+    <script type="text/javascript" src="/shop/templates/haier/js/event.ortchange.js"></script>
+    <script type="text/javascript" src="/shop/templates/haier/js/matchMedia.js"></script>
+    <script type="text/javascript" src="/shop/templates/haier/js/gmu.js"></script>
+    <script type="text/javascript" src="/shop/templates/haier/js/event.js"></script>
+    <script type="text/javascript" src="/shop/templates/haier/js/widget.js"></script>
+    <script type="text/javascript" src="/shop/templates/haier/js/panel.js"></script>
+    <script type="text/javascript" src="/shop/templates/haier/js/util.js"></script>
+  <!--  <script type="text/javascript" src="/shop/templates/haier/js/pz.js"></script>-->
+
+    <script type="text/javascript">
+        $(function () {
+            //统计购物车数量
+            $.getJSON("/shop/shopmgr.ashx?wid={$wid}&openid={$openid}&myact=pcount", function (d, status) {
+                $("#count").text(d.data);
+
+            });
+        });
+
+    </script>
+</head>
+<body>
+    <header class="header">
+        <span class="fh left"><a href="javascript:history.go(-1);">&nbsp;</a></span>
+        <span id="jg">{$category.title}(精品)</span>
+        <span class="hd_right right">
+            <a class="gwc" href="{$carturl}"><span id="count"></span>&nbsp;</a>
+            <a class="right_but" href="/shop/navigate.aspx?wid={$wid}&openid={$openid}">&nbsp;</a>
+        </span>
+    </header>
+    <div id="page">
+        <div id="cont">
+            <!--======main=====-->
+            <div class="main">
+                <link rel="stylesheet" type="text/css" href="/shop/templates/haier/css/suggestion.css" />
+                <div class="search" id="daoguo">
+                    <div class="search-input">
+                        <input type="text" id="sousuo_index" name="searchKey" value="" placeholder="商品分类导购">
+                    </div>
+                    <a id="search_button" href="javascript:void(0);" class="micon icon_search">&nbsp;</a>
+                </div>
+                <script type="text/javascript" src="/shop/templates/haier/js/highlight.js"></script>
+                <script type="text/javascript" src="/shop/templates/haier/js/suggestion.js"></script>
+
+                <script type="text/javascript">
+    
+   
+                </script>
+                <div id="list_pic" class="list_pic">
+                    <ul id="sortColumn">
+                        <li><a href="javascript:void(0);" value="saleDesc" class="on">热销</a></li>
+                        <li><a href="javascript:void(0);" value="priceDesc" id="jiage"><span>价格</span><b class=""></b></a></li>
+                        <li><a href="javascript:void(0);" value="newDesc">新品</a></li>
+                    </ul>
+                </div>
+                <!--======加载商品中=====-->
+                <div class="list_jiazai" style="display: none">
+                    <span>
+                        <img src="/shop/templates/haier/images/loading.gif"></span>
+                    <p>亲，稍等一下下</p>
+                </div>
+                <!--======加载商品结束=====-->
+                <div id="list_div">
+                    <!-- 列表页 商品列表 -->
+                    <vt:function var="hdp" method="getHotsalet" type="$this" rows="20" />
+                    <vt:foreach from="$hdp" item="p" index="i">
+                  
+                        <div class="lists_items">
+		 <p class="pic">
+			 <a href="/shop/detail.aspx?wid={$wid}&pid={$p.id}&openid={$openid}">
+								<img src="{$p.productpic}">
+							</a>
+		 </p>
+				<p class="list_tex"> 
+			<a href="/shop/detail.aspx?wid={$wid}&pid={$p.id}&openid={$openid}">
+				<span><font>￥{$p.salePrice}</font></span> 
+				<strong>{$p.productName}</strong></br>
+				{$p.sku}
+			</a>
+		</p>
+		<p class="list_tex">
+			<a class="activemsg" href=""></a>
+		</p>
+		<p class="list_tex" >
+							<span class="txt_blue">库存{$p.stock}</span>
+						
+		</p>
+	</div>
+		
+                         </vt:foreach>
+
+                    <div>
+                        <div class="details_more" style="float: left; width: 100%;">
+                            <a href="javascript:void(0);" id="gengduo" onclick="gengduo()">
+                                <span>查看更多</span><br />
+                                可能产生较多流量<br />
+                            </a>
+                        </div>
+                    </div>
+                    <script src="/shop/templates/haier/js/jquery.lazyload.js" charset="utf-8"></script>
+
+                   
+                </div>
+            </div>
+
+
+            <!--_share_js-->
+            <vt:template id="_bottom" file="_bottom.html" charset="utf-8" />
+            <!--/_share_js-->
+ 
+           
+          <script src="/scripts/weixin/wxcomm.js"></script>
+            <vt:set var="orderby" value="id asc" id="norderby" />
+            <vt:set var="pagesize" value="116" id="npagesize" />
+             <script type="text/javascript">
+                 var flog = false;
+                 var gd = "";
+                 $(document).ready(function () {
+                     var cid = $.query.get("cid");
+                     if (cid == 0) {
+                         $("#jg").text("搜索页");
+                     }});
+                 </script>
+        </div>
+        <!-- 列表页 筛选 -->
+        <div id="panel">
+            <!--======筛选弹窗=====-->
+
+        </div>
+
+        <script type="text/javascript" src="/shop/templates/haier/js/prduct_List.js"></script>
+        <script src="../../../scripts/jquery/jquery-2.1.0.min.js"></script>
+        <script src="../../../scripts/jquery/jquery.query.js"></script>
+        <script type="text/javascript">
+            var flog = false;
+            var gd = "";
+            $(document).ready(function () {
+                var cid = $.query.get("cid");
+                if (cid == 0) {
+                    $("#jg").text("搜索页");
+                }
+
+                //TAB 标题点击
+                $(".list_pic ul li").on("click", function () {
+                    if ($(this).find('a span').html() == '价格') {
+                        if ($(this).find('a b').hasClass('ticon')) {
+                            $("#jiage b").removeClass('ticon').addClass('micon bicon');
+                            $("#jiage").attr('value', 'priceAsc');
+                        } else {
+                            $("#jiage b").removeClass('bicon').addClass('micon ticon');
+                            $("#jiage").attr('value', 'priceDesc');
+                        }
+                    } else {
+                        $("#jiage b").removeClass('micon ticon');
+                        $("#jiage").attr('value', 'priceAsc');
+                    }
+                    if ($(this).find('a').attr("value") != 'filterBtn') {
+                        if (!$(this).find('a').hasClass('on') || $(this).find('a span').html() == '价格') {
+                            $(".list_pic ul li a").removeClass('on');
+                            $(this).find('a').addClass("on");
+                            LoadProduct();
+                        }
+                    }
+                });
+
+
+
+                //搜索
+                $("#search_button").click(function () {
+                    flog = true;
+
+                    var name = $("#sousuo_index").val();
+
+                    $.ajax({
+                        url: "/shop/shop.ashx?wid={$wid}&openid={$openid}&myact=sousuo",
+                        data: {
+                            name: name//省
+
+                        },
+                        type: "POST",
+                        success: function (data) {
+
+                            if (data != null) {
+                                $("#list_div").html(data);
+                            } else {
+                                location.href = "/shop/list.aspx";
+                            }
+                        }
+                    });
+                })
+
+
+            })
+
+            //更多
+            function gengduo() {
+
+                $("#daoguo").css('display', 'none');
+                var cid = $.query.get("cid");
+                gd = "gd";
+                $.ajax({
+                    url: "/shop/shop.ashx?wid={$wid}&cid=" + cid + "&openid={$openid}&myact=gengduo",
+                    data: "",
+                    type: "POST",
+                    success: function (data) {
+                        $("#list_div").html(data);
+                    }
+                });
+
+            }
+
+            //获取当前选中的排序方式
+            function getSortColumn() {
+                for (var i = 1; i <= $("#sortColumn li").length; i++) {
+                    if ($("#sortColumn li:nth-child( " + i + ")").children("a").hasClass("on")) {
+                        return value = $("#sortColumn li:nth-child( " + i + ")").children("a").attr("value");
+                    }
+                }
+            }
+
+
+
+
+            //加载商品
+            function LoadProduct() {
+                var sortColumn = getSortColumn();
+                var name = $("#sousuo_index").val();
+                var cid = $.query.get("cid");
+
+                $.ajax({
+                    url: "/shop/shop.ashx?wid={$wid}&cid=" + cid + "&openid={$openid}&myact=LoadProduct",
+                    data: {
+                        sortColumn: sortColumn,//value排序
+                        name: name,
+                        flog: flog,
+                        gd: gd
+                    },
+                    type: "POST",
+                    success: function (data) {
+                        $("#list_div").html(data);
+                    }
+                });
+                return false;
+            }
+
+            //设置content高度
+            function setHeight() {
+                var headerH = document.getElementById('list_pic').offsetHeight;
+                var footerH = document.getElementById('footer').offsetHeight;
+                var contentH = 0;
+                var tUserAgent = navigator.userAgent;
+                //由於Windows Phone不支援windows.innerHeight語法，改用screen代替
+                if (tUserAgent.indexOf("Windows Phone") != -1) {
+                    contentH = screen.availHeight - headerH - footerH - footerH + 20;
+                }
+                else {
+                    contentH = window.innerHeight - headerH - footerH - footerH + 20;
+                }
+                document.getElementById("product_no").style.height = contentH + "px";
+            }
+        </script>
+</body>
+</html>

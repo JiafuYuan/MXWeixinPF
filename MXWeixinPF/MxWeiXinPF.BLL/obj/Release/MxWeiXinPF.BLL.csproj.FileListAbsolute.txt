@@ -1,0 +1,13 @@
+D:\VSWorks\沐雪多用户微信平台\MXWeixinPF\MxWeiXinPF.BLL\bin\Release\MxWeiXinPF.BLL.dll
+D:\VSWorks\沐雪多用户微信平台\MXWeixinPF\MxWeiXinPF.BLL\bin\Release\MxWeiXinPF.BLL.pdb
+D:\VSWorks\沐雪多用户微信平台\MXWeixinPF\MxWeiXinPF.BLL\bin\Release\MxWeiXinPF.Common.dll
+D:\VSWorks\沐雪多用户微信平台\MXWeixinPF\MxWeiXinPF.BLL\bin\Release\MxWeiXinPF.DAL.dll
+D:\VSWorks\沐雪多用户微信平台\MXWeixinPF\MxWeiXinPF.BLL\bin\Release\MxWeiXinPF.Model.dll
+D:\VSWorks\沐雪多用户微信平台\MXWeixinPF\MxWeiXinPF.BLL\bin\Release\MxWeiXinPF.DBUtility.dll
+D:\VSWorks\沐雪多用户微信平台\MXWeixinPF\MxWeiXinPF.BLL\bin\Release\MxWeiXinPF.Common.pdb
+D:\VSWorks\沐雪多用户微信平台\MXWeixinPF\MxWeiXinPF.BLL\bin\Release\MxWeiXinPF.DAL.pdb
+D:\VSWorks\沐雪多用户微信平台\MXWeixinPF\MxWeiXinPF.BLL\bin\Release\MxWeiXinPF.Model.pdb
+D:\VSWorks\沐雪多用户微信平台\MXWeixinPF\MxWeiXinPF.BLL\bin\Release\MxWeiXinPF.DBUtility.pdb
+D:\VSWorks\沐雪多用户微信平台\MXWeixinPF\MxWeiXinPF.BLL\obj\Release\MxWeiXinPF.BLL.csprojResolveAssemblyReference.cache
+D:\VSWorks\沐雪多用户微信平台\MXWeixinPF\MxWeiXinPF.BLL\obj\Release\MxWeiXinPF.BLL.dll
+D:\VSWorks\沐雪多用户微信平台\MXWeixinPF\MxWeiXinPF.BLL\obj\Release\MxWeiXinPF.BLL.pdb

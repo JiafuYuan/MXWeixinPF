@@ -1,0 +1,5 @@
+D:\VSWorks\沐雪多用户微信平台\MXWeixinPF\MxWeiXinPF.Common\bin\Release\MxWeiXinPF.Common.dll
+D:\VSWorks\沐雪多用户微信平台\MXWeixinPF\MxWeiXinPF.Common\bin\Release\MxWeiXinPF.Common.pdb
+D:\VSWorks\沐雪多用户微信平台\MXWeixinPF\MxWeiXinPF.Common\obj\Release\MxWeiXinPF.Common.dll
+D:\VSWorks\沐雪多用户微信平台\MXWeixinPF\MxWeiXinPF.Common\obj\Release\MxWeiXinPF.Common.pdb
+D:\VSWorks\沐雪多用户微信平台\MXWeixinPF\MxWeiXinPF.Common\obj\Release\MxWeiXinPF.Common.csprojResolveAssemblyReference.cache

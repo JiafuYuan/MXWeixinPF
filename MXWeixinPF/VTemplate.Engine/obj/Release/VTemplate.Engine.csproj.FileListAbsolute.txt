@@ -1,0 +1,5 @@
+D:\VSWorks\沐雪多用户微信平台\MXWeixinPF\VTemplate.Engine\bin\Release\VTemplate.Engine.xml
+D:\VSWorks\沐雪多用户微信平台\MXWeixinPF\VTemplate.Engine\bin\Release\VTemplate.Engine.dll
+D:\VSWorks\沐雪多用户微信平台\MXWeixinPF\VTemplate.Engine\bin\Release\VTemplate.Engine.pdb
+D:\VSWorks\沐雪多用户微信平台\MXWeixinPF\VTemplate.Engine\obj\Release\VTemplate.Engine.dll
+D:\VSWorks\沐雪多用户微信平台\MXWeixinPF\VTemplate.Engine\obj\Release\VTemplate.Engine.pdb

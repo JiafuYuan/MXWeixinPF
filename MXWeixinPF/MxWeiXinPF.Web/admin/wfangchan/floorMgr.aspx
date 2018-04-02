@@ -1,0 +1,96 @@
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="floorMgr.aspx.cs" Inherits="MxWeiXinPF.Web.admin.wfangchan.floorMgr" %>
+
+<%@ Import Namespace="MxWeiXinPF.Common" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>楼盘管理</title>
+    <script type="text/javascript" src="../../scripts/jquery/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" src="../../scripts/jquery/jquery.lazyload.min.js"></script>
+    <script type="text/javascript" src="../../scripts/lhgdialog/lhgdialog.js?skin=idialog"></script>
+    <script type="text/javascript" src="../js/layout.js"></script>
+    <link href="../skin/default/style.css" rel="stylesheet" type="text/css" />
+    <link href="../skin/mystyle.css" rel="stylesheet" type="text/css" />
+    <link href="../../css/pagination.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body class="mainbody">
+    <form id="form1" runat="server">
+        <!--导航栏-->
+        <div class="location">
+            <a class="home"><i></i><span>楼盘管理</span></a>
+        </div>
+        <!--/导航栏-->
+
+        <!--工具栏-->
+        <div class="toolbar-wrap">
+            <div id="floatHead" class="toolbar">
+                <div class="l-list">
+                    <ul class="icon-list">
+                        <li><a class="add" href="floor_edit.aspx?action=<%=MXEnums.ActionEnum.Add %>"><i></i><span>添加楼盘</span></a></li>
+                        <li><a class="add" href="yyMgr.aspx"><i></i><span>预约管理</span></a></li>
+                        <li><a class="add" href="qjtMgr.aspx"><i></i><span>全景图管理管理</span></a></li>
+                        <li><a class="all" href="javascript:;" onclick="checkAll(this);"><i></i><span>全选</span></a></li>
+                        <li>
+                            <asp:LinkButton ID="btnDelete" runat="server" CssClass="del" OnClientClick="return ExePostBack('btnDelete');" OnClick="btnDelete_Click"><i></i><span>删除</span></asp:LinkButton></li>
+                    </ul>
+                </div>
+                <div class="r-list">
+                    <asp:TextBox ID="txtKeywords" runat="server" CssClass="keyword" />
+                    <asp:LinkButton ID="lbtnSearch" runat="server" CssClass="btn-search" OnClick="lbtnSearch_Click">查询</asp:LinkButton>
+                </div>
+            </div>
+        </div>
+        <!--/工具栏-->
+
+        <!--文字列表-->
+        <asp:Repeater ID="rptList" runat="server">
+            <HeaderTemplate>
+                <table width="100%" border="0" cellspacing="0" cellpadding="0" class="ltable">
+                    <tr>
+                        <th width="6%">选择</th>
+                        <th>楼盘名称</th>
+                        <th width="18%">关键词</th>
+                        <th width="50%">操作</th>
+                    </tr>
+            </HeaderTemplate>
+            <ItemTemplate>
+                <tr>
+                    <td align="center">
+                        <asp:CheckBox ID="chkId" CssClass="checkall" runat="server" Style="vertical-align: middle;" />
+                        <asp:HiddenField ID="hidId" Value='<%#Eval("id")%>' runat="server" />
+                    </td>
+                    <td align="center"><%#Eval("newsTitle")%></td>
+                    <td align="center"><%#Eval("kw")%></td>
+                    <td align="center">
+                        <a href="zlpMgr.aspx?action=<%#MXEnums.ActionEnum.Edit %>&id=<%#Eval("id")%>">子楼盘</a>&nbsp;|
+                        <a href="hxMgr.aspx?action=<%#MXEnums.ActionEnum.Edit %>&id=<%#Eval("id")%>">户型</a>&nbsp;|
+                        <a href="xcMgr.aspx?action=<%#MXEnums.ActionEnum.Edit %>&id=<%#Eval("id")%>">相册</a>&nbsp;| 
+                        <a href="fyyxMgr.aspx?action=<%#MXEnums.ActionEnum.Edit %>&id=<%#Eval("id")%>">房友印象</a>&nbsp;|
+                        <a href="zjdpMgr.aspx?action=<%#MXEnums.ActionEnum.Edit %>&id=<%#Eval("id")%>">专家点评</a>&nbsp;|
+                        <a href="yyddMgr.aspx?action=<%#MXEnums.ActionEnum.Edit %>&id=<%#Eval("id")%>">预约订单</a>&nbsp;|
+                        <a href="gywmMgr.aspx?action=<%#MXEnums.ActionEnum.Edit %>&id=<%#Eval("id")%>">关于我们</a>&nbsp;|
+                        <a href="floor_edit.aspx?action=<%#MXEnums.ActionEnum.Edit %>&id=<%#Eval("id")%>">编辑</a>
+                    </td>
+                </tr>
+            </ItemTemplate>
+            <FooterTemplate>
+                <%#rptList.Items.Count == 0 ? "<tr><td align=\"center\" colspan=\"4\">暂无记录</td></tr>" : ""%>
+</table>
+            </FooterTemplate>
+        </asp:Repeater>
+        <!--/文字列表-->
+
+        <!--内容底部-->
+        <div class="line20"></div>
+        <div class="pagelist">
+            <div class="l-btns">
+                <span>显示</span><asp:TextBox ID="txtPageNum" runat="server" CssClass="pagenum" onkeydown="return checkNumber(event);" OnTextChanged="txtPageNum_TextChanged" AutoPostBack="True"></asp:TextBox><span>条/页</span>
+            </div>
+            <div id="PageContent" runat="server" class="default"></div>
+        </div>
+        <!--/内容底部-->
+    </form>
+</body>
+</html>

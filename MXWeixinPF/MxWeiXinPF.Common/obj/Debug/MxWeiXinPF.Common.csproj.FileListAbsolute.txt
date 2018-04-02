@@ -1,0 +1,15 @@
+D:\VSWorks\沐雪多用户微信平台\MXWeixinPF\MxWeiXinPF.Common\bin\Debug\MxWeiXinPF.Common.dll
+D:\VSWorks\沐雪多用户微信平台\MXWeixinPF\MxWeiXinPF.Common\bin\Debug\MxWeiXinPF.Common.pdb
+D:\VSWorks\沐雪多用户微信平台\MXWeixinPF\MxWeiXinPF.Common\obj\Debug\MxWeiXinPF.Common.dll
+D:\VSWorks\沐雪多用户微信平台\MXWeixinPF\MxWeiXinPF.Common\obj\Debug\MxWeiXinPF.Common.pdb
+D:\VSWorks\沐雪多用户微信平台\MXWeixinPF\MxWeiXinPF.Common\obj\Debug\MxWeiXinPF.Common.csprojResolveAssemblyReference.cache
+E:\备份\微信开发\沐雪\0025-多用户微信\0025-多用户微信\MXWeixinPF\MxWeiXinPF.Common\bin\Debug\MxWeiXinPF.Common.dll
+E:\备份\微信开发\沐雪\0025-多用户微信\0025-多用户微信\MXWeixinPF\MxWeiXinPF.Common\bin\Debug\MxWeiXinPF.Common.pdb
+E:\备份\微信开发\沐雪\0025-多用户微信\0025-多用户微信\MXWeixinPF\MxWeiXinPF.Common\obj\Debug\ResolveAssemblyReference.cache
+E:\备份\微信开发\沐雪\0025-多用户微信\0025-多用户微信\MXWeixinPF\MxWeiXinPF.Common\obj\Debug\MxWeiXinPF.Common.dll
+E:\备份\微信开发\沐雪\0025-多用户微信\0025-多用户微信\MXWeixinPF\MxWeiXinPF.Common\obj\Debug\MxWeiXinPF.Common.pdb
+E:\网站开发\微信开发\沐学微信版本\沐雪微信0728\MXWeixinPF\MxWeiXinPF.Common\bin\Debug\MxWeiXinPF.Common.dll
+E:\网站开发\微信开发\沐学微信版本\沐雪微信0728\MXWeixinPF\MxWeiXinPF.Common\bin\Debug\MxWeiXinPF.Common.pdb
+E:\网站开发\微信开发\沐学微信版本\沐雪微信0728\MXWeixinPF\MxWeiXinPF.Common\obj\Debug\MxWeiXinPF.Common.csprojResolveAssemblyReference.cache
+E:\网站开发\微信开发\沐学微信版本\沐雪微信0728\MXWeixinPF\MxWeiXinPF.Common\obj\Debug\MxWeiXinPF.Common.dll
+E:\网站开发\微信开发\沐学微信版本\沐雪微信0728\MXWeixinPF\MxWeiXinPF.Common\obj\Debug\MxWeiXinPF.Common.pdb

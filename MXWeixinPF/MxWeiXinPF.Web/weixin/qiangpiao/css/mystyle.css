@@ -1,0 +1,49 @@
+.clearboth {
+clear:both;
+}
+.maincontent {
+    margin: .28rem .2rem;
+
+}
+.yypic_a {
+width:92%;
+margin:0 auto;
+height:60px;
+}
+.yypic_a a {
+    width:20%;
+    border:1px solid #DFDFDF;
+    padding:2px;
+    margin-right:2%;
+    float:left;
+    
+}
+.yypic_img {
+    width:100%;
+     height:60px;
+
+}
+.piclist {
+ width:96%;
+ margin:0 auto;
+
+}
+
+.piclist img{
+
+    width:23%;
+    padding-bottom:2%;
+    height:60px;
+   
+}
+
+.yypic {
+float:left;
+ 
+}
+.yypic_more {
+height:60px;
+vertical-align:middle;
+}
+
+ 

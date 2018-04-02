@@ -1,0 +1,136 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>{$config.webtitle}</title>
+
+    <meta name="keywords" content="{$config.webkeyword}" />
+    <meta name="description" content="{$config.webdescription}" />
+    <meta name="generator" content="muxue weixin" />
+    <meta name="author" content="{$config.webcompany}" />
+    <meta name="copyright" content="{$config.webcopyright}" />
+    <meta name="MSSmartTagsPreventParsing" content="True" />
+    <meta http-equiv="MSThemeCompatible" content="Yes" />
+    <base href="{$yuming}" />
+    <link rel="stylesheet" type="text/css" href="/templates_portal/css/style_2_common.css" />
+    <script src="/templates_portal/js/common.js" type="text/javascript"></script>
+    <meta name="application-name" content="{$config.webname}" />
+    <meta name="msapplication-tooltip" content="{$config.webname}" />
+    <meta name="msapplication-task" content="name={$category.title};action-uri={$yuming};icon-uri={$yuming}/favicon.ico" />
+    <style type="text/css">
+        .tips {
+            position: relative;
+            z-index: 2;
+        }
+
+            .tips:hover {
+                z-index: 3;
+                background: none;
+            }
+
+            .tips span {
+                display: none;
+                position: absolute;
+                top: 25px;
+                left: 5px;
+                width: 350px;
+                border: 1px solid #090;
+                background-color: #090;
+                box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+                border-radius: 6px;
+                padding: 6px 6px 4px 6px;
+                font-size: 12px;
+                line-height: 18px;
+                color: #fff;
+                text-align: left;
+            }
+
+            .tips:hover span {
+                display: block;
+            }
+
+            .tips span:before {
+                content: "";
+                width: 0;
+                height: 0;
+                position: absolute;
+                bottom: 100%;
+                left: 10px;
+                border-width: 0 8px 8px 8px;
+                border-style: solid;
+                border-color: #090 transparent;
+            }
+
+            .tips span:after {
+                content: "";
+                width: 0;
+                height: 0;
+                position: absolute;
+                bottom: 100%;
+                left: 12px;
+                border-width: 0 6px 6px 6px;
+                border-style: solid;
+                border-color: #090 transparent;
+            }
+    </style>
+</head>
+
+<body id="nv_member" class="pg_CURMODULE" onkeydown="if(event.keyCode==27) return false;">
+
+    <!--_header-->
+    <vt:template id="header" file="_header.html" charset="utf-8" />
+    <!--/_header-->
+
+    <div id="aaa"></div>
+
+    <div id="wp" class="wp">
+        <link href="/templates_portal/css/style.css" rel="stylesheet" type="text/css" />
+        <!--中间内容-->
+        <style type="text/css">
+            .ListProduct th, .ListProduct td {
+                text-align: center;
+            }
+
+            .section p {
+                margin-top: 6px;
+                line-height: 24px;
+            }
+
+            .section h2 {
+                font-size: 16px;
+            }
+
+            .section a img {
+                border: none;
+                vertical-align: middle;
+            }
+
+            .collapsible {
+                font-size: 14px;
+                padding: 40px;
+                line-height: 22px;
+            }
+        </style>
+        <div class="qtcontent">
+            <div class="intro">
+                <div class="normalTitle">
+                    <h2>用户注册</h2>
+                </div>
+                <div class="collapsible">
+                     <iframe src="/portalpage/register.aspx" style="width:100%;min-height:643px; border:0" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" allowtransparency="true" id="b"></iframe>
+
+                </div>
+            </div>
+        </div>
+        <!--底部-->
+
+        <!--_qqline-->
+        <vt:template id="Template1" file="_qqline.html" charset="utf-8" />
+        <!--/_qqline-->
+
+    </div>
+    <!--_bottom-->
+    <vt:template id="bottom" file="_bottom.html" charset="utf-8" />
+    <!--/_bottom-->
+</body>
+</html>

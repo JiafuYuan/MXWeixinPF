@@ -1,0 +1,46 @@
+#cate55  .mainmenu li a img { width:68%; height: auto; float:left;}
+
+#cate55  .mainmenu li a p{ width:32%; color:#FFF; padding:15px 0; display: block; position: relative;}
+#cate55  .mainmenu li a p b{ display:block; padding:0px 10px; font-size:16px;  font-weight:normal;  line-height:26px; text-align:left; text-overflow:ellipsis; white-space: nowrap; overflow:hidden}
+#cate55  .mainmenu li a p span { display: block;
+padding: 0px 10px;
+text-align: right;
+line-height: 16px;
+font-size: 12px;
+text-align: left;
+text-overflow:ellipsis; white-space: nowrap; overflow:hidden}
+
+
+
+#cate55  .mainmenu li i{ background: url(../../images/PIX2.png) no-repeat;
+background-size: 100%;
+width: 24px;
+height: 24px;
+display: block;
+margin: 10px 10px 0 10px;}
+
+#cate55 .mainmenu li a p:after {
+content: " ";
+display: block;
+width: 0px;
+height: 0px;
+border: 6px;
+border-style: solid;
+position: absolute;
+top: 50%;
+margin-top: -3px;
+left:-12px;  }
+
+
+#cate55  .mainmenu li a p{ float:right}
+#cate55  .mainmenu li a img{ float:left;}
+
+#cate55  .mainmenu li:nth-child(4n+1) { background-color:#ff9999;}
+#cate55  .mainmenu li:nth-child(4n+2) { background-color:#f2c15b;}
+#cate55  .mainmenu li:nth-child(4n+3) { background-color:#a1bbe0;}
+#cate55  .mainmenu li:nth-child(4n+4) { background-color:#e0c6a1;}
+
+#cate55  .mainmenu li:nth-child(4n+1) a p:after{ border-color:rgba(0,0,0,0) #ff9999 rgba(0,0,0,0)  rgba(0,0,0,0) }
+#cate55  .mainmenu li:nth-child(4n+2) a p:after{ border-color:rgba(0,0,0,0) #f2c15b rgba(0,0,0,0) rgba(0, 0, 0, 0) ;}
+#cate55  .mainmenu li:nth-child(4n+3) a p:after{ border-color:rgba(0,0,0,0) #a1bbe0 rgba(0,0,0,0)  rgba(0,0,0,0) ;}
+#cate55  .mainmenu li:nth-child(4n+4) a p:after{ border-color:rgba(0,0,0,0) #e0c6a1 rgba(0,0,0,0) rgba(0,0,0,0);}
